@@ -1,0 +1,38 @@
+{
+  "name": "demo.wchat.im",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "node node_modules/wchat-app-kit/.develop.js",
+    "build": "node node_modules/wchat-app-kit/.release.js",
+    "updatekit": "npm uninstall wchat-app-kit && npm install https://github.com/wchatim/wchat-app-kit"
+  },
+  "dependencies": {
+    "@egjs/hammerjs": "^2.0.17",
+    "moment": "^2.24.0",
+    "react-addons-shallow-compare": "15.6.2",
+    "react-native-animation-hooks": "^1.0.1",
+    "react-native-banner-carousel": "^1.0.3",
+    "react-native-datepicker": "^1.7.2",
+    "react-native-fit-image": "^1.5.4",
+    "react-native-image-pan-zoom": "^2.1.11",
+    "react-native-image-zoom-viewer": "^2.2.27",
+    "react-native-selfadapt-modal": "^1.1.0",
+    "react-native-snap-carousel": "^3.8.3",
+    "react-native-textarea": "^1.0.3",
+    "wchat-app-kit": "https://github.com/wchatim/wchat-app-kit"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.3",
+    "@babel/runtime": "^7.6.3",
+    "@react-native-community/eslint-config": "^0.0.5",
+    "babel-jest": "^24.9.0",
+    "chokidar": "^3.2.1",
+    "eslint": "^6.5.1",
+    "express": "^4.17.1",
+    "jest": "^24.9.0",
+    "metro-react-native-babel-preset": "^0.56.0",
+    "react": "16.9.0",
+    "react-native": "0.61.2",
+    "react-test-renderer": "16.9.0"
+  }
+}
