@@ -17,7 +17,7 @@ git clone https://github.com/wchatim/wchat-app-demo.git
 
 配置Android客户端小程序开发信息，如图：
 
-![.](https://img.wchat.im/cover/dev.jpg_500)
+![.](https://github.com/wchatim/wchat-app-demo/raw/master/img.jpg?raw=true)
     
 进入wchat-app目录，执行命令
 
