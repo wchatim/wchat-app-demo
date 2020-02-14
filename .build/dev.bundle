@@ -1,0 +1,4822 @@
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
+
+  var _wchatAppKit = _$$_REQUIRE(_dependencyMap[1], "wchat-app-kit");
+
+  var _Route = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[2], "./Route.js"));
+
+  _wchatAppKit.RNKit.AppRegistry.registerComponent(_$$_REQUIRE(_dependencyMap[3], "../package.json").name, function () {
+    return _Route.default;
+  });
+},"src_App",["node_modules_@babel_runtime_helpers_interopRequireDefault","node_modules_wchat-app-kit_index","src_Route","packageon"],"src/App.js");
+__d(function(global, require, _aUnused, _bUnused, module, exports, _cUnused) {
+  module.exports = {
+  "name": "demo.wchat.im",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "node node_modules/wchat-app-kit/.develop.js",
+    "build": "node node_modules/wchat-app-kit/.release.js",
+    "updatekit": "npm uninstall wchat-app-kit && npm install https://github.com/wchatim/wchat-app-kit"
+  },
+  "dependencies": {
+    "@egjs/hammerjs": "^2.0.17",
+    "moment": "^2.24.0",
+    "react-addons-shallow-compare": "15.6.2",
+    "react-native-animation-hooks": "^1.0.1",
+    "react-native-banner-carousel": "^1.0.3",
+    "react-native-datepicker": "^1.7.2",
+    "react-native-fit-image": "^1.5.4",
+    "react-native-image-pan-zoom": "^2.1.11",
+    "react-native-image-zoom-viewer": "^2.2.27",
+    "react-native-screens": "^2.0.0-beta.2",
+    "react-native-selfadapt-modal": "^1.1.0",
+    "react-native-snap-carousel": "^3.8.3",
+    "react-native-textarea": "^1.0.3",
+    "typescript": "^3.7.5",
+    "wchat-app-kit": "git+https://github.com/wchatim/wchat-app-kit.git"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.3",
+    "@babel/runtime": "^7.6.3",
+    "@react-native-community/eslint-config": "^0.0.5",
+    "babel-jest": "^24.9.0",
+    "chokidar": "^3.2.1",
+    "eslint": "^6.5.1",
+    "express": "^4.17.1",
+    "jest": "^24.9.0",
+    "metro-react-native-babel-preset": "^0.56.0",
+    "react": "16.9.0",
+    "react-native": "0.61.2",
+    "react-test-renderer": "16.9.0"
+  }
+}
+;
+},"packageon",[],"package.json");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
+
+  var _extends2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[1], "@babel/runtime/helpers/extends"));
+
+  var _objectWithoutProperties2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[2], "@babel/runtime/helpers/objectWithoutProperties"));
+
+  var _classCallCheck2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[3], "@babel/runtime/helpers/classCallCheck"));
+
+  var _createClass2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[4], "@babel/runtime/helpers/createClass"));
+
+  var _possibleConstructorReturn2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[5], "@babel/runtime/helpers/possibleConstructorReturn"));
+
+  var _getPrototypeOf3 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[6], "@babel/runtime/helpers/getPrototypeOf"));
+
+  var _inherits2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[7], "@babel/runtime/helpers/inherits"));
+
+  var _react = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[8], "react"));
+
+  var _reactNative = _$$_REQUIRE(_dependencyMap[9], "react-native");
+
+  var _ReactNativeVersion = _$$_REQUIRE(_dependencyMap[10], "react-native/Libraries/Core/ReactNativeVersion");
+
+  var _jsxFileName = "/Users/chattle/Documents/wchat-git/wchat-app-demo/node_modules/react-native-screens/src/screens.native.js";
+  var ENABLE_SCREENS = false;
+
+  var getViewManagerConfigCompat = function getViewManagerConfigCompat(name) {
+    return typeof _reactNative.UIManager.getViewManagerConfig !== 'undefined' ? _reactNative.UIManager.getViewManagerConfig(name) : _reactNative.UIManager[name];
+  };
+
+  function enableScreens() {
+    var shouldEnableScreens = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+    ENABLE_SCREENS = shouldEnableScreens;
+
+    if (ENABLE_SCREENS && !getViewManagerConfigCompat('RNSScreen')) {
+      console.error("Screen native module hasn't been linked. Please check the react-native-screens README for more details");
+    }
+  }
+
+  function useScreens() {
+    var shouldUseScreens = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+    console.warn('Method `useScreens` is deprecated, please use `enableScreens`');
+    enableScreens(shouldUseScreens);
+  }
+
+  function screensEnabled() {
+    return ENABLE_SCREENS;
+  }
+
+  var NativeScreenValue;
+  var NativeScreenContainerValue;
+  var NativeScreenStack;
+  var NativeScreenStackHeaderConfig;
+  var NativeScreenStackHeaderSubview;
+  var AnimatedNativeScreen;
+  var ScreensNativeModules = {
+    get NativeScreen() {
+      NativeScreenValue = NativeScreenValue || (0, _reactNative.requireNativeComponent)('RNSScreen', null);
+      return NativeScreenValue;
+    },
+
+    get NativeScreenContainer() {
+      NativeScreenContainerValue = NativeScreenContainerValue || (0, _reactNative.requireNativeComponent)('RNSScreenContainer', null);
+      return NativeScreenContainerValue;
+    },
+
+    get NativeScreenStack() {
+      NativeScreenStack = NativeScreenStack || (0, _reactNative.requireNativeComponent)('RNSScreenStack', null);
+      return NativeScreenStack;
+    },
+
+    get NativeScreenStackHeaderConfig() {
+      NativeScreenStackHeaderConfig = NativeScreenStackHeaderConfig || (0, _reactNative.requireNativeComponent)('RNSScreenStackHeaderConfig', null);
+      return NativeScreenStackHeaderConfig;
+    },
+
+    get NativeScreenStackHeaderSubview() {
+      NativeScreenStackHeaderSubview = NativeScreenStackHeaderSubview || (0, _reactNative.requireNativeComponent)('RNSScreenStackHeaderSubview', null);
+      return NativeScreenStackHeaderSubview;
+    }
+
+  };
+
+  var Screen = function (_React$Component) {
+    (0, _inherits2.default)(Screen, _React$Component);
+
+    function Screen() {
+      var _getPrototypeOf2;
+
+      var _this;
+
+      (0, _classCallCheck2.default)(this, Screen);
+
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+
+      _this = (0, _possibleConstructorReturn2.default)(this, (_getPrototypeOf2 = (0, _getPrototypeOf3.default)(Screen)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+      _this.setRef = function (ref) {
+        _this._ref = ref;
+        _this.props.onComponentRef && _this.props.onComponentRef(ref);
+      };
+
+      return _this;
+    }
+
+    (0, _createClass2.default)(Screen, [{
+      key: "setNativeProps",
+      value: function setNativeProps(props) {
+        this._ref.setNativeProps(props);
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        if (!ENABLE_SCREENS) {
+          var _this$props = this.props,
+              active = _this$props.active,
+              onComponentRef = _this$props.onComponentRef,
+              props = (0, _objectWithoutProperties2.default)(_this$props, ["active", "onComponentRef"]);
+          return _react.default.createElement(_reactNative.Animated.View, (0, _extends2.default)({}, props, {
+            ref: this.setRef,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 101
+            }
+          }));
+        } else {
+          AnimatedNativeScreen = AnimatedNativeScreen || _reactNative.Animated.createAnimatedComponent(ScreensNativeModules.NativeScreen);
+
+          if (_ReactNativeVersion.version.minor >= 57 || _ReactNativeVersion.version.minor === 0) {
+            return _react.default.createElement(AnimatedNativeScreen, (0, _extends2.default)({}, this.props, {
+              ref: this.setRef,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 109
+              }
+            }));
+          } else {
+            var _this$props2 = this.props,
+                style = _this$props2.style,
+                children = _this$props2.children,
+                rest = (0, _objectWithoutProperties2.default)(_this$props2, ["style", "children"]);
+            return _react.default.createElement(AnimatedNativeScreen, (0, _extends2.default)({}, rest, {
+              ref: this.setRef,
+              style: _reactNative.StyleSheet.absoluteFill,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 117
+              }
+            }), _react.default.createElement(_reactNative.Animated.View, {
+              style: style,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 121
+              }
+            }, children));
+          }
+        }
+      }
+    }]);
+    return Screen;
+  }(_react.default.Component);
+
+  var ScreenContainer = function (_React$Component2) {
+    (0, _inherits2.default)(ScreenContainer, _React$Component2);
+
+    function ScreenContainer() {
+      (0, _classCallCheck2.default)(this, ScreenContainer);
+      return (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf3.default)(ScreenContainer).apply(this, arguments));
+    }
+
+    (0, _createClass2.default)(ScreenContainer, [{
+      key: "render",
+      value: function render() {
+        if (!ENABLE_SCREENS) {
+          return _react.default.createElement(_reactNative.View, (0, _extends2.default)({}, this.props, {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 132
+            }
+          }));
+        } else {
+          return _react.default.createElement(ScreensNativeModules.NativeScreenContainer, (0, _extends2.default)({}, this.props, {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 134
+            }
+          }));
+        }
+      }
+    }]);
+    return ScreenContainer;
+  }(_react.default.Component);
+
+  var styles = _reactNative.StyleSheet.create({
+    headerSubview: {
+      position: 'absolute',
+      top: 0,
+      right: 0,
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center'
+    }
+  });
+
+  var ScreenStackHeaderBackButtonImage = function ScreenStackHeaderBackButtonImage(props) {
+    return _react.default.createElement(ScreensNativeModules.NativeScreenStackHeaderSubview, {
+      type: "back",
+      style: styles.headerSubview,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 151
+      }
+    }, _react.default.createElement(_reactNative.Image, (0, _extends2.default)({
+      resizeMode: "center",
+      fadeDuration: 0
+    }, props, {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 154
+      }
+    })));
+  };
+
+  var ScreenStackHeaderRightView = function ScreenStackHeaderRightView(props) {
+    return _react.default.createElement(ScreensNativeModules.NativeScreenStackHeaderSubview, (0, _extends2.default)({}, props, {
+      type: "right",
+      style: styles.headerSubview,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 159
+      }
+    }));
+  };
+
+  var ScreenStackHeaderLeftView = function ScreenStackHeaderLeftView(props) {
+    return _react.default.createElement(ScreensNativeModules.NativeScreenStackHeaderSubview, (0, _extends2.default)({}, props, {
+      type: "left",
+      style: styles.headerSubview,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 167
+      }
+    }));
+  };
+
+  var ScreenStackHeaderCenterView = function ScreenStackHeaderCenterView(props) {
+    return _react.default.createElement(ScreensNativeModules.NativeScreenStackHeaderSubview, (0, _extends2.default)({}, props, {
+      type: "center",
+      style: styles.headerSubview,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 175
+      }
+    }));
+  };
+
+  module.exports = {
+    ScreenContainer: ScreenContainer,
+    Screen: Screen,
+
+    get NativeScreen() {
+      return ScreensNativeModules.NativeScreen;
+    },
+
+    get NativeScreenContainer() {
+      return ScreensNativeModules.NativeScreenContainer;
+    },
+
+    get ScreenStack() {
+      return ScreensNativeModules.NativeScreenStack;
+    },
+
+    get ScreenStackHeaderConfig() {
+      return ScreensNativeModules.NativeScreenStackHeaderConfig;
+    },
+
+    get ScreenStackHeaderSubview() {
+      return ScreensNativeModules.NativeScreenStackHeaderSubview;
+    },
+
+    ScreenStackHeaderBackButtonImage: ScreenStackHeaderBackButtonImage,
+    ScreenStackHeaderRightView: ScreenStackHeaderRightView,
+    ScreenStackHeaderLeftView: ScreenStackHeaderLeftView,
+    ScreenStackHeaderCenterView: ScreenStackHeaderCenterView,
+    enableScreens: enableScreens,
+    useScreens: useScreens,
+    screensEnabled: screensEnabled
+  };
+},"node_modules_react-native-screens_src_screens.native",["node_modules_@babel_runtime_helpers_interopRequireDefault","node_modules_@babel_runtime_helpers_extends","node_modules_@babel_runtime_helpers_objectWithoutProperties","node_modules_@babel_runtime_helpers_classCallCheck","node_modules_@babel_runtime_helpers_createClass","node_modules_@babel_runtime_helpers_possibleConstructorReturn","node_modules_@babel_runtime_helpers_getPrototypeOf","node_modules_@babel_runtime_helpers_inherits","node_modules_react_index","react-native-implementation","ReactNativeVersion"],"node_modules/react-native-screens/src/screens.native.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _reactNative = _$$_REQUIRE(_dependencyMap[0], "react-native");
+
+  var isIos = _reactNative.Platform.OS === "ios";
+  var WChat = {
+    showToast: function showToast(msg) {
+      var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2000;
+
+      _reactNative.NativeModules.WChatNative.showToast(msg, duration);
+    },
+    showLoading: function showLoading() {
+      var canBack = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+
+      _reactNative.NativeModules.WChatNative.showLoading(canBack);
+    },
+    cancelLoading: function cancelLoading() {
+      _reactNative.NativeModules.WChatNative.cancelLoading();
+    },
+    showAlert: function showAlert(title, content, left, right) {
+      return new Promise(function (resolve, reject) {
+        try {
+          if (isIos) {
+            _reactNative.NativeModules.WChatNative.alert(title, content, left, right).then(function (result) {
+              resolve(result);
+            }).catch(function (_ref) {
+              var code = _ref.code,
+                  message = _ref.message;
+              reject({
+                code: code,
+                msg: message
+              });
+            });
+          } else {
+            _reactNative.NativeModules.WChatNative.alert(title, content, left, right, function (r) {
+              resolve(r);
+            });
+          }
+        } catch (e) {
+          reject({
+            code: "500",
+            msg: "exception"
+          });
+        }
+      });
+    },
+    getNavgationHeight: function getNavgationHeight() {
+      return new Promise(function (resolve, reject) {
+        try {
+          if (isIos) {
+            _reactNative.NativeModules.WChatNative.getNavgationHeight().then(function (height) {
+              resolve(parseInt(height));
+            }).catch(function (_ref2) {
+              var code = _ref2.code,
+                  message = _ref2.message;
+              reject({
+                code: code,
+                msg: message
+              });
+            });
+          } else {
+            _reactNative.NativeModules.WChatNative.getNavgationHeight(function (h) {
+              resolve(parseInt(h));
+            }, function (code, msg) {
+              reject({
+                code: code,
+                msg: msg
+              });
+            });
+          }
+        } catch (e) {
+          reject({
+            code: "500",
+            msg: "exception"
+          });
+        }
+      });
+    },
+    getOs: function getOs() {
+      return new Promise(function (resolve, reject) {
+        try {
+          if (isIos) {
+            _reactNative.NativeModules.WChatNative.getSystemInfo().then(function (data) {
+              resolve(JSON.parse(data));
+            }).catch(function (_ref3) {
+              var code = _ref3.code,
+                  message = _ref3.message;
+              reject({
+                code: code,
+                msg: message
+              });
+            });
+          } else {
+            _reactNative.NativeModules.WChatNative.getSystemInfo(function (data) {
+              resolve(JSON.parse(data));
+            }, function (code, msg) {
+              reject({
+                code: code,
+                msg: msg
+              });
+            });
+          }
+        } catch (e) {
+          reject({
+            code: "500",
+            msg: "exception"
+          });
+        }
+      });
+    },
+    getStatusBarHeight: function getStatusBarHeight() {
+      return new Promise(function (resolve, reject) {
+        try {
+          if (isIos) {
+            _reactNative.NativeModules.WChatNative.getStatusBarHeight().then(function (height) {
+              resolve(parseInt(height));
+            }).catch(function (_ref4) {
+              var code = _ref4.code,
+                  message = _ref4.message;
+              reject({
+                code: code,
+                msg: message
+              });
+            });
+          } else {
+            _reactNative.NativeModules.WChatNative.getStatusBarHeight(function (h) {
+              resolve(parseInt(h));
+            }, function (code, msg) {
+              reject({
+                code: code,
+                msg: msg
+              });
+            });
+          }
+        } catch (e) {
+          reject({
+            code: "500",
+            msg: "exception"
+          });
+        }
+      });
+    },
+    setStatusBgColor: function setStatusBgColor(color) {
+      return new Promise(function (resolve, reject) {
+        try {
+          if (isIos) {
+            _reactNative.NativeModules.WChatNative.setStatusBgColor(color).then(function (data) {
+              resolve(data);
+            }).catch(function (_ref5) {
+              var code = _ref5.code,
+                  message = _ref5.message;
+              reject({
+                code: code,
+                msg: message
+              });
+            });
+          } else {
+            _reactNative.NativeModules.WChatNative.setStatusBgColor(color);
+
+            resolve("");
+          }
+        } catch (e) {
+          reject({
+            code: "500",
+            msg: "exception"
+          });
+        }
+      });
+    },
+    checkAppInstall: function checkAppInstall(pkg) {
+      return new Promise(function (resolve, reject) {
+        try {
+          if (isIos) {
+            _reactNative.NativeModules.WChatNative.checkAppInstall(pkg).then(function (isInstall) {
+              resolve(isInstall);
+            }).catch(function (_ref6) {
+              var code = _ref6.code,
+                  message = _ref6.message;
+              reject({
+                code: code,
+                msg: message
+              });
+            });
+          } else {
+            _reactNative.NativeModules.WChatNative.checkAppInstall(pkg, function (r) {
+              resolve(r);
+            }, function (code, msg) {
+              reject({
+                code: code,
+                msg: msg
+              });
+            });
+          }
+        } catch (e) {
+          reject({
+            code: "500",
+            msg: "exception"
+          });
+        }
+      });
+    },
+    requestLogin: function requestLogin() {
+      return new Promise(function (resolve, reject) {
+        if (isIos) {
+          _reactNative.NativeModules.WChatNative.requestLogin().then(function (data) {
+            resolve(JSON.parse(data));
+          }).catch(function (_ref7) {
+            var code = _ref7.code,
+                message = _ref7.message;
+            reject({
+              code: code,
+              msg: message
+            });
+          });
+        } else {
+          _reactNative.NativeModules.WChatNative.requestLogin(function (data) {
+            resolve(JSON.parse(data));
+          }, function (code, msg) {
+            reject({
+              code: code,
+              msg: msg
+            });
+          });
+        }
+      });
+    },
+    requestLocation: function requestLocation() {
+      return new Promise(function (resolve, reject) {
+        if (isIos) {
+          _reactNative.NativeModules.WChatNative.requestLocation().then(function (data) {
+            resolve(data);
+          }).catch(function (_ref8) {
+            var code = _ref8.code,
+                message = _ref8.message;
+            reject({
+              code: code,
+              msg: message
+            });
+          });
+        } else {
+          _reactNative.NativeModules.WChatNative.requestLocation(function (data) {
+            resolve(data);
+          }, function (code, msg) {
+            reject({
+              code: code,
+              msg: msg
+            });
+          });
+        }
+      });
+    },
+    requestPhoto: function requestPhoto(selectNum, showCamera, enableCrop, cropWH) {
+      return new Promise(function (resolve, reject) {
+        if (isIos) {
+          _reactNative.NativeModules.WChatNative.requestPhoto(selectNum, showCamera, enableCrop, cropWH).then(function (data) {
+            resolve(JSON.parse(data));
+          }).catch(function (_ref9) {
+            var code = _ref9.code,
+                message = _ref9.message;
+            reject({
+              code: code,
+              msg: message
+            });
+          });
+        } else {
+          _reactNative.NativeModules.WChatNative.requestPhoto(selectNum, showCamera, enableCrop, cropWH, function (data) {
+            resolve(JSON.parse(data));
+          }, function (code, msg) {
+            reject({
+              code: code,
+              msg: msg
+            });
+          });
+        }
+      });
+    },
+    requestChains: function requestChains() {
+      return new Promise(function (resolve, reject) {
+        if (isIos) {
+          _reactNative.NativeModules.WChatNative.requestChains().then(function (data) {
+            resolve(JSON.parse(data));
+          }).catch(function (_ref10) {
+            var code = _ref10.code,
+                message = _ref10.message;
+            reject({
+              code: code,
+              msg: message
+            });
+          });
+        } else {
+          _reactNative.NativeModules.WChatNative.requestChains(function (data) {
+            resolve(JSON.parse(data));
+          }, function (code, msg) {
+            reject({
+              code: code,
+              msg: msg
+            });
+          });
+        }
+      });
+    },
+    requestWallet: function requestWallet(cid) {
+      return new Promise(function (resolve, reject) {
+        if (isIos) {
+          _reactNative.NativeModules.WChatNative.requestWallet(cid + "").then(function (data) {
+            resolve(JSON.parse(data));
+          }).catch(function (_ref11) {
+            var code = _ref11.code,
+                message = _ref11.message;
+            reject({
+              code: code,
+              msg: message
+            });
+          });
+        } else {
+          _reactNative.NativeModules.WChatNative.requestWallet(cid + "", function (data) {
+            resolve(JSON.parse(data));
+          }, function (code, msg) {
+            reject({
+              code: code,
+              msg: msg
+            });
+          });
+        }
+      });
+    },
+    requestChat: function requestChat(type, targetid) {
+      return new Promise(function (resolve, reject) {
+        if (isIos) {
+          _reactNative.NativeModules.WChatNative.requestChat(type, targetid).then(function (data) {
+            resolve(data);
+          }).catch(function (_ref12) {
+            var code = _ref12.code,
+                message = _ref12.message;
+            reject({
+              code: code,
+              msg: message
+            });
+          });
+        } else {
+          _reactNative.NativeModules.WChatNative.requestChat(type, targetid, function (data) {
+            resolve(data);
+          }, function (code, msg) {
+            reject({
+              code: code,
+              msg: msg
+            });
+          });
+        }
+      });
+    },
+    share: function share(title, subtitle, img, link) {
+      return new Promise(function (resolve, reject) {
+        if (isIos) {
+          _reactNative.NativeModules.WChatNative.share(title, subtitle, img, link).then(function (data) {
+            resolve(data);
+          }).catch(function (_ref13) {
+            var code = _ref13.code,
+                message = _ref13.message;
+            reject({
+              code: code,
+              msg: message
+            });
+          });
+        } else {
+          _reactNative.NativeModules.WChatNative.share(title, subtitle, img, link, function (data) {
+            resolve(data);
+          }, function (code, msg) {
+            reject({
+              code: code,
+              msg: msg
+            });
+          });
+        }
+      });
+    },
+    shareImg: function shareImg(img) {
+      return new Promise(function (resolve, reject) {
+        if (isIos) {
+          _reactNative.NativeModules.WChatNative.shareImg(img).then(function (data) {
+            resolve(data);
+          }).catch(function (_ref14) {
+            var code = _ref14.code,
+                message = _ref14.message;
+            reject({
+              code: code,
+              msg: message
+            });
+          });
+        } else {
+          _reactNative.NativeModules.WChatNative.shareImg(img, function (data) {
+            resolve(data);
+          }, function (code, msg) {
+            reject({
+              code: code,
+              msg: msg
+            });
+          });
+        }
+      });
+    },
+    requestBindCode: function requestBindCode() {
+      return new Promise(function (resolve, reject) {
+        if (isIos) {
+          _reactNative.NativeModules.WChatNative.requestBindCode().then(function (data) {
+            resolve(data);
+          }).catch(function (_ref15) {
+            var code = _ref15.code,
+                message = _ref15.message;
+            reject({
+              code: code,
+              msg: message
+            });
+          });
+        } else {
+          _reactNative.NativeModules.WChatNative.requestBindCode(function (data) {
+            resolve(data);
+          }, function (code, msg) {
+            reject({
+              code: code,
+              msg: msg
+            });
+          });
+        }
+      });
+    },
+    requestIntentParams: function requestIntentParams() {
+      return new Promise(function (resolve, reject) {
+        if (isIos) {
+          _reactNative.NativeModules.WChatNative.requestIntentParams().then(function (data) {
+            resolve(data);
+          }).catch(function (_ref16) {
+            var code = _ref16.code,
+                message = _ref16.message;
+            reject({
+              code: code,
+              msg: message
+            });
+          });
+        } else {
+          _reactNative.NativeModules.WChatNative.requestIntentParams(function (data) {
+            resolve(data);
+          }, function (code, msg) {
+            reject({
+              code: code,
+              msg: msg
+            });
+          });
+        }
+      });
+    },
+    requestCharge: function requestCharge(cid) {
+      return new Promise(function (resolve, reject) {
+        if (isIos) {
+          _reactNative.NativeModules.WChatNative.requestCharge(cid + "").then(function (data) {
+            resolve(data);
+          }).catch(function (_ref17) {
+            var code = _ref17.code,
+                message = _ref17.message;
+            reject({
+              code: code,
+              msg: message
+            });
+          });
+        } else {
+          _reactNative.NativeModules.WChatNative.requestCharge(cid + "", function (data) {
+            resolve(data);
+          }, function (code, msg) {
+            reject({
+              code: code,
+              msg: msg
+            });
+          });
+        }
+      });
+    },
+    requestBalance: function requestBalance(cid) {
+      return new Promise(function (resolve, reject) {
+        if (isIos) {
+          _reactNative.NativeModules.WChatNative.requestBalance(cid + "").then(function (data) {
+            resolve(data);
+          }).catch(function (_ref18) {
+            var code = _ref18.code,
+                message = _ref18.message;
+            reject({
+              code: code,
+              msg: message
+            });
+          });
+        } else {
+          _reactNative.NativeModules.WChatNative.requestBalance(cid + "", function (data) {
+            resolve(data);
+          }, function (code, msg) {
+            reject({
+              code: code,
+              msg: msg
+            });
+          });
+        }
+      });
+    },
+    requestPayment: function requestPayment(timestamp, nonce, orderid, paySign) {
+      return new Promise(function (resolve, reject) {
+        if (isIos) {
+          _reactNative.NativeModules.WChatNative.requestPayment(timestamp, nonce, orderid, paySign).then(function (data) {
+            resolve(data);
+          }).catch(function (_ref19) {
+            var code = _ref19.code,
+                message = _ref19.message;
+            reject({
+              code: code,
+              msg: message
+            });
+          });
+        } else {
+          _reactNative.NativeModules.WChatNative.requestPayment(timestamp, nonce, orderid, paySign, function (data) {
+            resolve(data);
+          }, function (code, msg) {
+            reject({
+              code: code,
+              msg: msg
+            });
+          });
+        }
+      });
+    },
+    requestWeb: function requestWeb(url, settings) {
+      return new Promise(function (resolve, reject) {
+        if (isIos) {
+          _reactNative.NativeModules.WChatNative.requestWeb(url, settings).then(function (data) {
+            resolve(data);
+          }).catch(function (_ref20) {
+            var code = _ref20.code,
+                message = _ref20.message;
+            reject({
+              code: code,
+              msg: message
+            });
+          });
+        } else {
+          _reactNative.NativeModules.WChatNative.requestWeb(url, settings, function (data) {
+            resolve(data);
+          }, function (code, msg) {
+            reject({
+              code: code,
+              msg: msg
+            });
+          });
+        }
+      });
+    },
+    upload: function upload(files) {
+      return new Promise(function (resolve, reject) {
+        if (isIos) {
+          _reactNative.NativeModules.WChatNative.upload(files).then(function (data) {
+            resolve(data);
+          }).catch(function (_ref21) {
+            var code = _ref21.code,
+                message = _ref21.message;
+            reject({
+              code: code,
+              msg: message
+            });
+          });
+        } else {
+          _reactNative.NativeModules.WChatNative.upload(files, function (data) {
+            resolve(data);
+          }, function (code, msg) {
+            reject({
+              code: code,
+              msg: msg
+            });
+          });
+        }
+      });
+    },
+    log: function log(tag, message) {
+      return new Promise(function (resolve, reject) {
+        if (isIos) {
+          _reactNative.NativeModules.WChatNative.log(tag, message).then(function (data) {
+            resolve(data);
+          }).catch(function (_ref22) {
+            var code = _ref22.code,
+                message = _ref22.message;
+            reject({
+              code: code,
+              msg: message
+            });
+          });
+        } else {
+          _reactNative.NativeModules.WChatNative.log(tag, message, function (data) {
+            resolve(data);
+          }, function (code, msg) {
+            reject({
+              code: code,
+              msg: msg
+            });
+          });
+        }
+      });
+    }
+  };
+  module.exports = WChat;
+},"node_modules_wchat-app-kit_src_WChat",["react-native-implementation"],"node_modules/wchat-app-kit/src/WChat.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _reactNative = _$$_REQUIRE(_dependencyMap[0], "react-native");
+
+  var isIos = _reactNative.Platform.OS === "ios";
+  var Storage = {
+    save: function save(key, value) {
+      return new Promise(function (resolve, reject) {
+        if (isIos) {
+          _reactNative.NativeModules.WChatNative.storeSave(key, value).then(function (data) {
+            resolve(data);
+          }, function (code, message) {
+            reject({
+              code: code,
+              msg: message
+            });
+          });
+        } else {
+          _reactNative.NativeModules.WChatNative.storeSave(key, value, function (data) {
+            resolve(data);
+          }, function (code, msg) {
+            reject({
+              code: code,
+              msg: msg
+            });
+          });
+        }
+      });
+    },
+    get: function get(key) {
+      return new Promise(function (resolve, reject) {
+        if (isIos) {
+          _reactNative.NativeModules.WChatNative.storeGet(key).then(function (value) {
+            resolve(value);
+          }, function (code, message) {
+            reject({
+              code: code,
+              msg: message
+            });
+          });
+        } else {
+          _reactNative.NativeModules.WChatNative.storeGet(key, function (data) {
+            resolve(data);
+          }, function (code, msg) {
+            reject({
+              code: code,
+              msg: msg
+            });
+          });
+        }
+      });
+    }
+  };
+  module.exports = Storage;
+},"node_modules_wchat-app-kit_src_Storage",["react-native-implementation"],"node_modules/wchat-app-kit/src/Storage.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+
+  var _reactNavigation = _$$_REQUIRE(_dependencyMap[0], "react-navigation");
+
+  var navigation;
+
+  var init = function init(nav) {
+    navigation = nav;
+  };
+
+  var push = function push(page, params) {
+    navigation.push(page, params);
+  };
+
+  var pop = function pop() {
+    var index = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+    navigation.pop(index);
+  };
+
+  var popToTop = function popToTop() {
+    navigation.popToTop();
+  };
+
+  var replace = function replace(page, params) {
+    navigation.replace(page, params);
+  };
+
+  var reset = function reset(page) {
+    navigation.reset([_reactNavigation.NavigationActions.navigate({
+      routeName: page
+    })], 0);
+  };
+
+  var dismiss = function dismiss() {
+    navigation.dismiss();
+  };
+
+  var _default = {
+    init: init,
+    push: push,
+    pop: pop,
+    popToTop: popToTop,
+    replace: replace,
+    reset: reset,
+    dismiss: dismiss
+  };
+  exports.default = _default;
+},"node_modules_wchat-app-kit_src_NavUtils",["node_modules_react-navigation_src_react-navigation"],"node_modules/wchat-app-kit/src/NavUtils.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _defineProperty = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/defineProperty");
+
+  var _extends = _$$_REQUIRE(_dependencyMap[1], "@babel/runtime/helpers/extends");
+
+  var _jsxFileName = "/Users/chattle/Documents/wchat-git/wchat-app-demo/node_modules/wchat-app-kit/src/ScrollableTabView/index.js";
+
+  var React = _$$_REQUIRE(_dependencyMap[2], "react");
+
+  var Component = React.Component;
+
+  var _ReactNative = ReactNative = _$$_REQUIRE(_dependencyMap[3], "react-native"),
+      ViewPropTypes = _ReactNative.ViewPropTypes;
+
+  var createReactClass = _$$_REQUIRE(_dependencyMap[4], "create-react-class");
+
+  var PropTypes = _$$_REQUIRE(_dependencyMap[5], "prop-types");
+
+  var _ReactNative2 = ReactNative,
+      Dimensions = _ReactNative2.Dimensions,
+      View = _ReactNative2.View,
+      Animated = _ReactNative2.Animated,
+      ScrollView = _ReactNative2.ScrollView,
+      Platform = _ReactNative2.Platform,
+      StyleSheet = _ReactNative2.StyleSheet,
+      InteractionManager = _ReactNative2.InteractionManager;
+
+  var TimerMixin = _$$_REQUIRE(_dependencyMap[6], "react-timer-mixin");
+
+  var ViewPager = _$$_REQUIRE(_dependencyMap[7], "@react-native-community/viewpager");
+
+  var SceneComponent = _$$_REQUIRE(_dependencyMap[8], "./SceneComponent");
+
+  var DefaultTabBar = _$$_REQUIRE(_dependencyMap[9], "./DefaultTabBar");
+
+  var ScrollableTabBar = _$$_REQUIRE(_dependencyMap[10], "./ScrollableTabBar");
+
+  var AnimatedViewPagerAndroid = "android" === 'android' ? Animated.createAnimatedComponent(ViewPager) : undefined;
+  var ScrollableTabView = createReactClass({
+    displayName: "ScrollableTabView",
+    mixins: [TimerMixin],
+    statics: {
+      DefaultTabBar: DefaultTabBar,
+      ScrollableTabBar: ScrollableTabBar
+    },
+    scrollOnMountCalled: false,
+    propTypes: {
+      tabBarPosition: PropTypes.oneOf(['top', 'bottom', 'overlayTop', 'overlayBottom']),
+      initialPage: PropTypes.number,
+      page: PropTypes.number,
+      onChangeTab: PropTypes.func,
+      onScroll: PropTypes.func,
+      renderTabBar: PropTypes.any,
+      tabBarUnderlineStyle: ViewPropTypes.style,
+      tabBarBackgroundColor: PropTypes.string,
+      tabBarActiveTextColor: PropTypes.string,
+      tabBarInactiveTextColor: PropTypes.string,
+      tabBarTextStyle: PropTypes.object,
+      style: ViewPropTypes.style,
+      contentProps: PropTypes.object,
+      scrollWithoutAnimation: PropTypes.bool,
+      locked: PropTypes.bool,
+      prerenderingSiblingsNumber: PropTypes.number
+    },
+    getDefaultProps: function getDefaultProps() {
+      return {
+        tabBarPosition: 'top',
+        initialPage: 0,
+        page: -1,
+        onChangeTab: function onChangeTab() {},
+        onScroll: function onScroll() {},
+        contentProps: {},
+        scrollWithoutAnimation: false,
+        locked: false,
+        prerenderingSiblingsNumber: 0
+      };
+    },
+    getInitialState: function getInitialState() {
+      var _this = this;
+
+      var containerWidth = Dimensions.get('window').width;
+      var scrollValue;
+      var scrollXIOS;
+      var positionAndroid;
+      var offsetAndroid;
+
+      if ("android" === 'ios') {
+        scrollXIOS = new Animated.Value(this.props.initialPage * containerWidth);
+        var containerWidthAnimatedValue = new Animated.Value(containerWidth);
+
+        containerWidthAnimatedValue.__makeNative();
+
+        scrollValue = Animated.divide(scrollXIOS, containerWidthAnimatedValue);
+
+        var callListeners = this._polyfillAnimatedValue(scrollValue);
+
+        scrollXIOS.addListener(function (_ref) {
+          var value = _ref.value;
+          return callListeners(value / _this.state.containerWidth);
+        });
+      } else {
+        positionAndroid = new Animated.Value(this.props.initialPage);
+        offsetAndroid = new Animated.Value(0);
+        scrollValue = Animated.add(positionAndroid, offsetAndroid);
+
+        var _callListeners = this._polyfillAnimatedValue(scrollValue);
+
+        var positionAndroidValue = this.props.initialPage;
+        var offsetAndroidValue = 0;
+        positionAndroid.addListener(function (_ref2) {
+          var value = _ref2.value;
+          positionAndroidValue = value;
+
+          _callListeners(positionAndroidValue + offsetAndroidValue);
+        });
+        offsetAndroid.addListener(function (_ref3) {
+          var value = _ref3.value;
+          offsetAndroidValue = value;
+
+          _callListeners(positionAndroidValue + offsetAndroidValue);
+        });
+      }
+
+      return {
+        currentPage: this.props.initialPage,
+        scrollValue: scrollValue,
+        scrollXIOS: scrollXIOS,
+        positionAndroid: positionAndroid,
+        offsetAndroid: offsetAndroid,
+        containerWidth: containerWidth,
+        sceneKeys: this.newSceneKeys({
+          currentPage: this.props.initialPage
+        })
+      };
+    },
+    componentDidUpdate: function componentDidUpdate(prevProps) {
+      if (this.props.children !== prevProps.children) {
+        this.updateSceneKeys({
+          page: this.state.currentPage,
+          children: this.props.children
+        });
+      }
+
+      if (this.props.page >= 0 && this.props.page !== this.state.currentPage) {
+        this.goToPage(this.props.page);
+      }
+    },
+    componentWillUnmount: function componentWillUnmount() {
+      if ("android" === 'ios') {
+        this.state.scrollXIOS.removeAllListeners();
+      } else {
+        this.state.positionAndroid.removeAllListeners();
+        this.state.offsetAndroid.removeAllListeners();
+      }
+    },
+    goToPage: function goToPage(pageNumber) {
+      if ("android" === 'ios') {
+        var offset = pageNumber * this.state.containerWidth;
+
+        if (this.scrollView) {
+          this.scrollView.getNode().scrollTo({
+            x: offset,
+            y: 0,
+            animated: !this.props.scrollWithoutAnimation
+          });
+        }
+      } else {
+        if (this.scrollView) {
+          if (this.props.scrollWithoutAnimation) {
+            this.scrollView.getNode().setPageWithoutAnimation(pageNumber);
+          } else {
+            this.scrollView.getNode().setPage(pageNumber);
+          }
+        }
+      }
+
+      var currentPage = this.state.currentPage;
+      this.updateSceneKeys({
+        page: pageNumber,
+        callback: this._onChangeTab.bind(this, currentPage, pageNumber)
+      });
+    },
+    renderTabBar: function renderTabBar(props) {
+      if (this.props.renderTabBar === false) {
+        return null;
+      } else if (this.props.renderTabBar) {
+        return React.cloneElement(this.props.renderTabBar(props), props);
+      } else {
+        return React.createElement(DefaultTabBar, _extends({}, props, {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 163
+          }
+        }));
+      }
+    },
+    updateSceneKeys: function updateSceneKeys(_ref4) {
+      var page = _ref4.page,
+          _ref4$children = _ref4.children,
+          children = _ref4$children === void 0 ? this.props.children : _ref4$children,
+          _ref4$callback = _ref4.callback,
+          callback = _ref4$callback === void 0 ? function () {} : _ref4$callback;
+      var newKeys = this.newSceneKeys({
+        previousKeys: this.state.sceneKeys,
+        currentPage: page,
+        children: children
+      });
+      this.setState({
+        currentPage: page,
+        sceneKeys: newKeys
+      }, callback);
+    },
+    newSceneKeys: function newSceneKeys(_ref5) {
+      var _this2 = this;
+
+      var _ref5$previousKeys = _ref5.previousKeys,
+          previousKeys = _ref5$previousKeys === void 0 ? [] : _ref5$previousKeys,
+          _ref5$currentPage = _ref5.currentPage,
+          currentPage = _ref5$currentPage === void 0 ? 0 : _ref5$currentPage,
+          _ref5$children = _ref5.children,
+          children = _ref5$children === void 0 ? this.props.children : _ref5$children;
+      var newKeys = [];
+
+      this._children(children).forEach(function (child, idx) {
+        var key = _this2._makeSceneKey(child, idx);
+
+        if (_this2._keyExists(previousKeys, key) || _this2._shouldRenderSceneKey(idx, currentPage)) {
+          newKeys.push(key);
+        }
+      });
+
+      return newKeys;
+    },
+    _polyfillAnimatedValue: function _polyfillAnimatedValue(animatedValue) {
+      var listeners = new Set();
+
+      var addListener = function addListener(listener) {
+        listeners.add(listener);
+      };
+
+      var removeListener = function removeListener(listener) {
+        listeners.delete(listener);
+      };
+
+      var removeAllListeners = function removeAllListeners() {
+        listeners.clear();
+      };
+
+      animatedValue.addListener = addListener;
+      animatedValue.removeListener = removeListener;
+      animatedValue.removeAllListeners = removeAllListeners;
+      return function (value) {
+        return listeners.forEach(function (listener) {
+          return listener({
+            value: value
+          });
+        });
+      };
+    },
+    _shouldRenderSceneKey: function _shouldRenderSceneKey(idx, currentPageKey) {
+      var numOfSibling = this.props.prerenderingSiblingsNumber;
+      return idx < currentPageKey + numOfSibling + 1 && idx > currentPageKey - numOfSibling - 1;
+    },
+    _keyExists: function _keyExists(sceneKeys, key) {
+      return sceneKeys.find(function (sceneKey) {
+        return key === sceneKey;
+      });
+    },
+    _makeSceneKey: function _makeSceneKey(child, idx) {
+      return child.props.tabLabel + '_' + idx;
+    },
+    renderScrollableContent: function renderScrollableContent() {
+      var _this3 = this;
+
+      if ("android" === 'ios') {
+        var scenes = this._composeScenes();
+
+        return React.createElement(Animated.ScrollView, _extends({
+          horizontal: true,
+          pagingEnabled: true,
+          automaticallyAdjustContentInsets: false,
+          contentOffset: {
+            x: this.props.initialPage * this.state.containerWidth
+          },
+          ref: function ref(scrollView) {
+            _this3.scrollView = scrollView;
+          },
+          onScroll: Animated.event([{
+            nativeEvent: {
+              contentOffset: {
+                x: this.state.scrollXIOS
+              }
+            }
+          }], {
+            useNativeDriver: true,
+            listener: this._onScroll
+          }),
+          onMomentumScrollBegin: this._onMomentumScrollBeginAndEnd,
+          onMomentumScrollEnd: this._onMomentumScrollBeginAndEnd,
+          scrollEventThrottle: 16,
+          scrollsToTop: false,
+          showsHorizontalScrollIndicator: false,
+          scrollEnabled: !this.props.locked,
+          directionalLockEnabled: true,
+          alwaysBounceVertical: false,
+          keyboardDismissMode: "on-drag"
+        }, this.props.contentProps, {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 226
+          }
+        }), scenes);
+      } else {
+        var _scenes = this._composeScenes();
+
+        return React.createElement(AnimatedViewPagerAndroid, _extends({
+          key: this._children().length,
+          style: styles.scrollableContentAndroid,
+          initialPage: this.props.initialPage,
+          onPageSelected: this._updateSelectedPage,
+          keyboardDismissMode: "on-drag",
+          scrollEnabled: !this.props.locked,
+          onPageScroll: Animated.event([{
+            nativeEvent: {
+              position: this.state.positionAndroid,
+              offset: this.state.offsetAndroid
+            }
+          }], {
+            useNativeDriver: true,
+            listener: this._onScroll
+          }),
+          ref: function ref(scrollView) {
+            _this3.scrollView = scrollView;
+          }
+        }, this.props.contentProps, {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 251
+          }
+        }), _scenes);
+      }
+    },
+    _composeScenes: function _composeScenes() {
+      var _this4 = this;
+
+      return this._children().map(function (child, idx) {
+        var key = _this4._makeSceneKey(child, idx);
+
+        return React.createElement(SceneComponent, {
+          key: child.key,
+          shouldUpdated: _this4._shouldRenderSceneKey(idx, _this4.state.currentPage),
+          style: {
+            width: _this4.state.containerWidth
+          },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 281
+          }
+        }, _this4._keyExists(_this4.state.sceneKeys, key) ? child : React.createElement(View, {
+          tabLabel: child.props.tabLabel,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 286
+          }
+        }));
+      });
+    },
+    _onMomentumScrollBeginAndEnd: function _onMomentumScrollBeginAndEnd(e) {
+      var offsetX = e.nativeEvent.contentOffset.x;
+      var page = Math.round(offsetX / this.state.containerWidth);
+
+      if (this.state.currentPage !== page) {
+        this._updateSelectedPage(page);
+      }
+    },
+    _updateSelectedPage: function _updateSelectedPage(nextPage) {
+      var localNextPage = nextPage;
+
+      if (typeof localNextPage === 'object') {
+        localNextPage = nextPage.nativeEvent.position;
+      }
+
+      var currentPage = this.state.currentPage;
+      this.updateSceneKeys({
+        page: localNextPage,
+        callback: this._onChangeTab.bind(this, currentPage, localNextPage)
+      });
+    },
+    _onChangeTab: function _onChangeTab(prevPage, currentPage) {
+      this.props.onChangeTab({
+        i: currentPage,
+        ref: this._children()[currentPage],
+        from: prevPage
+      });
+    },
+    _onScroll: function _onScroll(e) {
+      if ("android" === 'ios') {
+        var offsetX = e.nativeEvent.contentOffset.x;
+
+        if (offsetX === 0 && !this.scrollOnMountCalled) {
+          this.scrollOnMountCalled = true;
+        } else {
+          this.props.onScroll(offsetX / this.state.containerWidth);
+        }
+      } else {
+        var _e$nativeEvent = e.nativeEvent,
+            position = _e$nativeEvent.position,
+            offset = _e$nativeEvent.offset;
+        this.props.onScroll(position + offset);
+      }
+    },
+    _handleLayout: function _handleLayout(e) {
+      var _this5 = this;
+
+      var width = e.nativeEvent.layout.width;
+
+      if (!width || width <= 0 || Math.round(width) === Math.round(this.state.containerWidth)) {
+        return;
+      }
+
+      if ("android" === 'ios') {
+        var containerWidthAnimatedValue = new Animated.Value(width);
+
+        containerWidthAnimatedValue.__makeNative();
+
+        scrollValue = Animated.divide(this.state.scrollXIOS, containerWidthAnimatedValue);
+        this.setState({
+          containerWidth: width,
+          scrollValue: scrollValue
+        });
+      } else {
+        this.setState({
+          containerWidth: width
+        });
+      }
+
+      this.requestAnimationFrame(function () {
+        _this5.goToPage(_this5.state.currentPage);
+      });
+    },
+    _children: function _children() {
+      var children = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.props.children;
+      return React.Children.map(children, function (child) {
+        return child;
+      });
+    },
+    render: function render() {
+      var overlayTabs = this.props.tabBarPosition === 'overlayTop' || this.props.tabBarPosition === 'overlayBottom';
+      var tabBarProps = {
+        goToPage: this.goToPage,
+        tabs: this._children().map(function (child) {
+          return child.props.tabLabel;
+        }),
+        activeTab: this.state.currentPage,
+        scrollValue: this.state.scrollValue,
+        containerWidth: this.state.containerWidth
+      };
+
+      if (this.props.tabBarBackgroundColor) {
+        tabBarProps.backgroundColor = this.props.tabBarBackgroundColor;
+      }
+
+      if (this.props.tabBarActiveTextColor) {
+        tabBarProps.activeTextColor = this.props.tabBarActiveTextColor;
+      }
+
+      if (this.props.tabBarInactiveTextColor) {
+        tabBarProps.inactiveTextColor = this.props.tabBarInactiveTextColor;
+      }
+
+      if (this.props.tabBarTextStyle) {
+        tabBarProps.textStyle = this.props.tabBarTextStyle;
+      }
+
+      if (this.props.tabBarUnderlineStyle) {
+        tabBarProps.underlineStyle = this.props.tabBarUnderlineStyle;
+      }
+
+      if (overlayTabs) {
+        tabBarProps.style = _defineProperty({
+          position: 'absolute',
+          left: 0,
+          right: 0
+        }, this.props.tabBarPosition === 'overlayTop' ? 'top' : 'bottom', 0);
+      }
+
+      return React.createElement(View, {
+        style: [styles.container, this.props.style],
+        onLayout: this._handleLayout,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 394
+        }
+      }, this.props.tabBarPosition === 'top' && this.renderTabBar(tabBarProps), this.renderScrollableContent(), (this.props.tabBarPosition === 'bottom' || overlayTabs) && this.renderTabBar(tabBarProps));
+    }
+  });
+  module.exports = ScrollableTabView;
+  var styles = StyleSheet.create({
+    container: {
+      flex: 1
+    },
+    scrollableContentAndroid: {
+      flex: 1
+    }
+  });
+},"node_modules_wchat-app-kit_src_ScrollableTabView_index",["node_modules_@babel_runtime_helpers_defineProperty","node_modules_@babel_runtime_helpers_extends","node_modules_react_index","react-native-implementation","node_modules_create-react-class_index","node_modules_prop-types_index","node_modules_react-timer-mixin_TimerMixin","node_modules_@react-native-community_viewpager_js_index","node_modules_wchat-app-kit_src_ScrollableTabView_SceneComponent","node_modules_wchat-app-kit_src_ScrollableTabView_DefaultTabBar","node_modules_wchat-app-kit_src_ScrollableTabView_ScrollableTabBar"],"node_modules/wchat-app-kit/src/ScrollableTabView/index.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _extends = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/extends");
+
+  var _objectWithoutProperties = _$$_REQUIRE(_dependencyMap[1], "@babel/runtime/helpers/objectWithoutProperties");
+
+  var _jsxFileName = "/Users/chattle/Documents/wchat-git/wchat-app-demo/node_modules/wchat-app-kit/src/ScrollableTabView/SceneComponent.js";
+
+  var React = _$$_REQUIRE(_dependencyMap[2], "react");
+
+  var ReactNative = _$$_REQUIRE(_dependencyMap[3], "react-native");
+
+  var View = ReactNative.View;
+
+  var StaticContainer = _$$_REQUIRE(_dependencyMap[4], "./StaticContainer");
+
+  var SceneComponent = function SceneComponent(Props) {
+    var shouldUpdated = Props.shouldUpdated,
+        props = _objectWithoutProperties(Props, ["shouldUpdated"]);
+
+    return React.createElement(View, _extends({}, props, {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 9
+      }
+    }), React.createElement(StaticContainer, {
+      shouldUpdate: shouldUpdated,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 10
+      }
+    }, props.children));
+  };
+
+  module.exports = SceneComponent;
+},"node_modules_wchat-app-kit_src_ScrollableTabView_SceneComponent",["node_modules_@babel_runtime_helpers_extends","node_modules_@babel_runtime_helpers_objectWithoutProperties","node_modules_react_index","react-native-implementation","node_modules_wchat-app-kit_src_ScrollableTabView_StaticContainer"],"node_modules/wchat-app-kit/src/ScrollableTabView/SceneComponent.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _classCallCheck = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/classCallCheck");
+
+  var _createClass = _$$_REQUIRE(_dependencyMap[1], "@babel/runtime/helpers/createClass");
+
+  var _possibleConstructorReturn = _$$_REQUIRE(_dependencyMap[2], "@babel/runtime/helpers/possibleConstructorReturn");
+
+  var _getPrototypeOf = _$$_REQUIRE(_dependencyMap[3], "@babel/runtime/helpers/getPrototypeOf");
+
+  var _inherits = _$$_REQUIRE(_dependencyMap[4], "@babel/runtime/helpers/inherits");
+
+  var React = _$$_REQUIRE(_dependencyMap[5], "react");
+
+  var StaticContainer = function (_React$Component) {
+    "use strict";
+
+    _inherits(StaticContainer, _React$Component);
+
+    function StaticContainer() {
+      _classCallCheck(this, StaticContainer);
+
+      return _possibleConstructorReturn(this, _getPrototypeOf(StaticContainer).apply(this, arguments));
+    }
+
+    _createClass(StaticContainer, [{
+      key: "shouldComponentUpdate",
+      value: function shouldComponentUpdate(nextProps) {
+        return !!nextProps.shouldUpdate;
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        var child = this.props.children;
+
+        if (child === null || child === false) {
+          return null;
+        }
+
+        return React.Children.only(child);
+      }
+    }]);
+
+    return StaticContainer;
+  }(React.Component);
+
+  module.exports = StaticContainer;
+},"node_modules_wchat-app-kit_src_ScrollableTabView_StaticContainer",["node_modules_@babel_runtime_helpers_classCallCheck","node_modules_@babel_runtime_helpers_createClass","node_modules_@babel_runtime_helpers_possibleConstructorReturn","node_modules_@babel_runtime_helpers_getPrototypeOf","node_modules_@babel_runtime_helpers_inherits","node_modules_react_index"],"node_modules/wchat-app-kit/src/ScrollableTabView/StaticContainer.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _jsxFileName = "/Users/chattle/Documents/wchat-git/wchat-app-demo/node_modules/wchat-app-kit/src/ScrollableTabView/DefaultTabBar.js";
+
+  var React = _$$_REQUIRE(_dependencyMap[0], "react");
+
+  var _ReactNative = ReactNative = _$$_REQUIRE(_dependencyMap[1], "react-native"),
+      ViewPropTypes = _ReactNative.ViewPropTypes;
+
+  var PropTypes = _$$_REQUIRE(_dependencyMap[2], "prop-types");
+
+  var createReactClass = _$$_REQUIRE(_dependencyMap[3], "create-react-class");
+
+  var _ReactNative2 = ReactNative,
+      StyleSheet = _ReactNative2.StyleSheet,
+      Text = _ReactNative2.Text,
+      View = _ReactNative2.View,
+      Animated = _ReactNative2.Animated;
+
+  var Button = _$$_REQUIRE(_dependencyMap[4], "./Button");
+
+  var DefaultTabBar = createReactClass({
+    displayName: "DefaultTabBar",
+    propTypes: {
+      goToPage: PropTypes.func,
+      activeTab: PropTypes.number,
+      tabs: PropTypes.array,
+      backgroundColor: PropTypes.string,
+      activeTextColor: PropTypes.string,
+      inactiveTextColor: PropTypes.string,
+      textStyle: Text.propTypes.style,
+      tabStyle: ViewPropTypes.style,
+      renderTab: PropTypes.func,
+      underlineStyle: ViewPropTypes.style
+    },
+    getDefaultProps: function getDefaultProps() {
+      return {
+        activeTextColor: 'navy',
+        inactiveTextColor: 'black',
+        backgroundColor: null
+      };
+    },
+    renderTabOption: function renderTabOption(name, page) {},
+    renderTab: function renderTab(name, page, isTabActive, onPressHandler) {
+      var _this$props = this.props,
+          activeTextColor = _this$props.activeTextColor,
+          inactiveTextColor = _this$props.inactiveTextColor,
+          textStyle = _this$props.textStyle;
+      var textColor = isTabActive ? activeTextColor : inactiveTextColor;
+      var fontWeight = isTabActive ? 'bold' : 'normal';
+      return React.createElement(Button, {
+        style: {
+          flex: 1
+        },
+        key: name,
+        accessible: true,
+        accessibilityLabel: name,
+        accessibilityTraits: "button",
+        onPress: function onPress() {
+          return onPressHandler(page);
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 43
+        }
+      }, React.createElement(View, {
+        style: [styles.tab, this.props.tabStyle],
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 51
+        }
+      }, React.createElement(Text, {
+        style: [{
+          color: textColor,
+          fontWeight: fontWeight
+        }, textStyle],
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 52
+        }
+      }, name)));
+    },
+    render: function render() {
+      var _this = this;
+
+      var containerWidth = this.props.containerWidth;
+      var numberOfTabs = this.props.tabs.length;
+      var tabUnderlineStyle = {
+        position: 'absolute',
+        width: containerWidth / numberOfTabs,
+        height: 4,
+        backgroundColor: 'navy',
+        bottom: 0
+      };
+      var translateX = this.props.scrollValue.interpolate({
+        inputRange: [0, 1],
+        outputRange: [0, containerWidth / numberOfTabs]
+      });
+      return React.createElement(View, {
+        style: [styles.tabs, {
+          backgroundColor: this.props.backgroundColor
+        }, this.props.style],
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 75
+        }
+      }, this.props.tabs.map(function (name, page) {
+        var isTabActive = _this.props.activeTab === page;
+        var renderTab = _this.props.renderTab || _this.renderTab;
+        return renderTab(name, page, isTabActive, _this.props.goToPage);
+      }), React.createElement(Animated.View, {
+        style: [tabUnderlineStyle, {
+          transform: [{
+            translateX: translateX
+          }]
+        }, this.props.underlineStyle],
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 81
+        }
+      }));
+    }
+  });
+  var styles = StyleSheet.create({
+    tab: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingBottom: 10
+    },
+    tabs: {
+      height: 50,
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      borderWidth: 1,
+      borderTopWidth: 0,
+      borderLeftWidth: 0,
+      borderRightWidth: 0,
+      borderColor: '#ccc'
+    }
+  });
+  module.exports = DefaultTabBar;
+},"node_modules_wchat-app-kit_src_ScrollableTabView_DefaultTabBar",["node_modules_react_index","react-native-implementation","node_modules_prop-types_index","node_modules_create-react-class_index","node_modules_wchat-app-kit_src_ScrollableTabView_Button.android"],"node_modules/wchat-app-kit/src/ScrollableTabView/DefaultTabBar.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _extends = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/extends");
+
+  var _jsxFileName = "/Users/chattle/Documents/wchat-git/wchat-app-demo/node_modules/wchat-app-kit/src/ScrollableTabView/Button.android.js";
+
+  var React = _$$_REQUIRE(_dependencyMap[1], "react");
+
+  var ReactNative = _$$_REQUIRE(_dependencyMap[2], "react-native");
+
+  var TouchableOpacity = ReactNative.TouchableOpacity,
+      View = ReactNative.View;
+
+  var Button = function Button(props) {
+    return React.createElement(TouchableOpacity, _extends({
+      activeOpacity: 0.95
+    }, props, {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 9
+      }
+    }), props.children);
+  };
+
+  module.exports = Button;
+},"node_modules_wchat-app-kit_src_ScrollableTabView_Button.android",["node_modules_@babel_runtime_helpers_extends","node_modules_react_index","react-native-implementation"],"node_modules/wchat-app-kit/src/ScrollableTabView/Button.android.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
+
+  var _propTypes = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[1], "prop-types"));
+
+  var _jsxFileName = "/Users/chattle/Documents/wchat-git/wchat-app-demo/node_modules/wchat-app-kit/src/ScrollableTabView/ScrollableTabBar.js";
+
+  var React = _$$_REQUIRE(_dependencyMap[2], "react");
+
+  var ReactNative = _$$_REQUIRE(_dependencyMap[3], "react-native");
+
+  var createReactClass = _$$_REQUIRE(_dependencyMap[4], "create-react-class");
+
+  var View = ReactNative.View,
+      Animated = ReactNative.Animated,
+      StyleSheet = ReactNative.StyleSheet,
+      ScrollView = ReactNative.ScrollView,
+      Text = ReactNative.Text,
+      Platform = ReactNative.Platform,
+      Dimensions = ReactNative.Dimensions,
+      ViewPropTypes = ReactNative.ViewPropTypes;
+
+  var Button = _$$_REQUIRE(_dependencyMap[5], "./Button");
+
+  var WINDOW_WIDTH = Dimensions.get('window').width;
+  var ScrollableTabBar = createReactClass({
+    displayName: "ScrollableTabBar",
+    propTypes: {
+      goToPage: _propTypes.default.func,
+      activeTab: _propTypes.default.number,
+      tabs: _propTypes.default.array,
+      backgroundColor: _propTypes.default.string,
+      activeTextColor: _propTypes.default.string,
+      inactiveTextColor: _propTypes.default.string,
+      scrollOffset: _propTypes.default.number,
+      style: ViewPropTypes.style,
+      tabStyle: ViewPropTypes.style,
+      tabsContainerStyle: ViewPropTypes.style,
+      textStyle: Text.propTypes.style,
+      renderTab: _propTypes.default.func,
+      underlineStyle: ViewPropTypes.style,
+      onScroll: _propTypes.default.func
+    },
+    getDefaultProps: function getDefaultProps() {
+      return {
+        scrollOffset: 52,
+        activeTextColor: 'navy',
+        inactiveTextColor: 'black',
+        backgroundColor: null,
+        style: {},
+        tabStyle: {},
+        tabsContainerStyle: {},
+        underlineStyle: {}
+      };
+    },
+    getInitialState: function getInitialState() {
+      this._tabsMeasurements = [];
+      return {
+        _leftTabUnderline: new Animated.Value(0),
+        _widthTabUnderline: new Animated.Value(0),
+        _containerWidth: null
+      };
+    },
+    componentDidMount: function componentDidMount() {
+      this.props.scrollValue.addListener(this.updateView);
+    },
+    updateView: function updateView(offset) {
+      var position = Math.floor(offset.value);
+      var pageOffset = offset.value % 1;
+      var tabCount = this.props.tabs.length;
+      var lastTabPosition = tabCount - 1;
+
+      if (tabCount === 0 || offset.value < 0 || offset.value > lastTabPosition) {
+        return;
+      }
+
+      if (this.necessarilyMeasurementsCompleted(position, position === lastTabPosition)) {
+        this.updateTabPanel(position, pageOffset);
+        this.updateTabUnderline(position, pageOffset, tabCount);
+      }
+    },
+    necessarilyMeasurementsCompleted: function necessarilyMeasurementsCompleted(position, isLastTab) {
+      return this._tabsMeasurements[position] && (isLastTab || this._tabsMeasurements[position + 1]) && this._tabContainerMeasurements && this._containerMeasurements;
+    },
+    updateTabPanel: function updateTabPanel(position, pageOffset) {
+      var containerWidth = this._containerMeasurements.width;
+      var tabWidth = this._tabsMeasurements[position].width;
+      var nextTabMeasurements = this._tabsMeasurements[position + 1];
+      var nextTabWidth = nextTabMeasurements && nextTabMeasurements.width || 0;
+      var tabOffset = this._tabsMeasurements[position].left;
+      var absolutePageOffset = pageOffset * tabWidth;
+      var newScrollX = tabOffset + absolutePageOffset;
+      newScrollX -= (containerWidth - (1 - pageOffset) * tabWidth - pageOffset * nextTabWidth) / 2;
+      newScrollX = newScrollX >= 0 ? newScrollX : 0;
+
+      if ("android" === 'android') {
+        this._scrollView.scrollTo({
+          x: newScrollX,
+          y: 0,
+          animated: false
+        });
+      } else {
+        var rightBoundScroll = this._tabContainerMeasurements.width - this._containerMeasurements.width;
+        newScrollX = newScrollX > rightBoundScroll ? rightBoundScroll : newScrollX;
+
+        this._scrollView.scrollTo({
+          x: newScrollX,
+          y: 0,
+          animated: false
+        });
+      }
+    },
+    updateTabUnderline: function updateTabUnderline(position, pageOffset, tabCount) {
+      var lineLeft = this._tabsMeasurements[position].left;
+      var lineRight = this._tabsMeasurements[position].right;
+
+      if (position < tabCount - 1) {
+        var nextTabLeft = this._tabsMeasurements[position + 1].left;
+        var nextTabRight = this._tabsMeasurements[position + 1].right;
+        var newLineLeft = pageOffset * nextTabLeft + (1 - pageOffset) * lineLeft;
+        var newLineRight = pageOffset * nextTabRight + (1 - pageOffset) * lineRight;
+        var w = this._tabsMeasurements[position];
+        var l = (w.width - this.props.underlineStyle.width) / 2;
+
+        this.state._leftTabUnderline.setValue(newLineLeft + l);
+
+        this.state._widthTabUnderline.setValue(newLineRight - newLineLeft);
+      } else {
+        var _w = this._tabsMeasurements[position];
+
+        var _l = (_w.width - this.props.underlineStyle.width) / 2;
+
+        this.state._leftTabUnderline.setValue(lineLeft + _l);
+
+        this.state._widthTabUnderline.setValue(lineRight - lineLeft);
+      }
+    },
+    renderTab: function renderTab(name, page, isTabActive, onPressHandler, onLayoutHandler) {
+      var _this$props = this.props,
+          activeTextColor = _this$props.activeTextColor,
+          inactiveTextColor = _this$props.inactiveTextColor,
+          textStyle = _this$props.textStyle;
+      var textColor = isTabActive ? activeTextColor : inactiveTextColor;
+      var fontWeight = isTabActive ? 'normal' : 'normal';
+      return React.createElement(Button, {
+        key: name + "_" + page,
+        accessible: true,
+        accessibilityLabel: name,
+        accessibilityTraits: "button",
+        onPress: function onPress() {
+          return onPressHandler(page);
+        },
+        onLayout: onLayoutHandler,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 140
+        }
+      }, React.createElement(View, {
+        style: [styles.tab, this.props.tabStyle],
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 148
+        }
+      }, React.createElement(Text, {
+        style: [{
+          color: textColor,
+          fontWeight: fontWeight
+        }, textStyle],
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 149
+        }
+      }, name)));
+    },
+    measureTab: function measureTab(page, event) {
+      var _event$nativeEvent$la = event.nativeEvent.layout,
+          x = _event$nativeEvent$la.x,
+          width = _event$nativeEvent$la.width,
+          height = _event$nativeEvent$la.height;
+      this._tabsMeasurements[page] = {
+        left: x,
+        right: x + width,
+        width: width,
+        height: height
+      };
+      this.updateView({
+        value: this.props.scrollValue.__getValue()
+      });
+    },
+    render: function render() {
+      var _this = this;
+
+      var tabUnderlineStyle = {
+        position: 'absolute',
+        height: 4,
+        backgroundColor: 'navy',
+        bottom: 0
+      };
+      var dynamicTabUnderline = {
+        left: this.state._leftTabUnderline,
+        width: this.state._widthTabUnderline
+      };
+      return React.createElement(View, {
+        style: [styles.container, {
+          backgroundColor: this.props.backgroundColor
+        }, this.props.style],
+        onLayout: this.onContainerLayout,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 175
+        }
+      }, React.createElement(ScrollView, {
+        ref: function ref(scrollView) {
+          _this._scrollView = scrollView;
+        },
+        horizontal: true,
+        showsHorizontalScrollIndicator: false,
+        showsVerticalScrollIndicator: false,
+        directionalLockEnabled: true,
+        bounces: false,
+        scrollsToTop: false,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 179
+        }
+      }, React.createElement(View, {
+        style: [styles.tabs, {
+          width: this.state._containerWidth
+        }, this.props.tabsContainerStyle],
+        ref: 'tabContainer',
+        onLayout: this.onTabContainerLayout,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 188
+        }
+      }, this.props.tabs.map(function (name, page) {
+        var isTabActive = _this.props.activeTab === page;
+        var renderTab = _this.props.renderTab || _this.renderTab;
+        return renderTab(name, page, isTabActive, _this.props.goToPage, _this.measureTab.bind(_this, page));
+      }), React.createElement(Animated.View, {
+        style: [tabUnderlineStyle, dynamicTabUnderline, this.props.underlineStyle],
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 198
+        }
+      }))));
+    },
+    componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
+      if (JSON.stringify(this.props.tabs) !== JSON.stringify(nextProps.tabs) && this.state._containerWidth) {
+        this.setState({
+          _containerWidth: null
+        });
+      }
+    },
+    onTabContainerLayout: function onTabContainerLayout(e) {
+      this._tabContainerMeasurements = e.nativeEvent.layout;
+      var width = this._tabContainerMeasurements.width;
+
+      if (width < WINDOW_WIDTH) {
+        width = WINDOW_WIDTH;
+      }
+
+      this.setState({
+        _containerWidth: width
+      });
+      this.updateView({
+        value: this.props.scrollValue.__getValue()
+      });
+    },
+    onContainerLayout: function onContainerLayout(e) {
+      this._containerMeasurements = e.nativeEvent.layout;
+      this.updateView({
+        value: this.props.scrollValue.__getValue()
+      });
+    }
+  });
+  module.exports = ScrollableTabBar;
+  var styles = StyleSheet.create({
+    tab: {
+      height: 49,
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingLeft: 10,
+      paddingRight: 10
+    },
+    container: {
+      height: 50,
+      borderWidth: 1,
+      borderTopWidth: 0,
+      borderLeftWidth: 0,
+      borderRightWidth: 0,
+      borderColor: '#ccc'
+    },
+    tabs: {
+      flexDirection: 'row',
+      justifyContent: 'space-around'
+    }
+  });
+},"node_modules_wchat-app-kit_src_ScrollableTabView_ScrollableTabBar",["node_modules_@babel_runtime_helpers_interopRequireDefault","node_modules_prop-types_index","node_modules_react_index","react-native-implementation","node_modules_create-react-class_index","node_modules_wchat-app-kit_src_ScrollableTabView_Button.android"],"node_modules/wchat-app-kit/src/ScrollableTabView/ScrollableTabBar.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+
+  var _wchatAppKit = _$$_REQUIRE(_dependencyMap[1], "wchat-app-kit");
+
+  var _Home = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[2], "./views/Home"));
+
+  var _Splash = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[3], "./views/Splash"));
+
+  var _DemoList = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[4], "./views/DemoList"));
+
+  var _BottomTab = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[5], "./views/BottomTab"));
+
+  var _Tab = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[6], "./views/Tab"));
+
+  var _default = _wchatAppKit.Navigation.createAppContainer(_wchatAppKit.Navigation.createStackNavigator({
+    Splash: {
+      screen: _Splash.default
+    },
+    home: {
+      screen: _Home.default
+    },
+    demoList: {
+      screen: _DemoList.default
+    },
+    bottomTab: {
+      screen: _BottomTab.default
+    },
+    topTab: {
+      screen: _Tab.default
+    }
+  }, {
+    initialRouteName: 'Splash',
+    defaultNavigationOptions: {
+      header: null
+    }
+  }));
+
+  exports.default = _default;
+},"src_Route",["node_modules_@babel_runtime_helpers_interopRequireDefault","node_modules_wchat-app-kit_index","src_views_Home","src_views_Splash","src_views_DemoList","src_views_BottomTab","src_views_Tab"],"src/Route.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = HomeView;
+
+  var _slicedToArray2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[1], "@babel/runtime/helpers/slicedToArray"));
+
+  var _wchatAppKit = _$$_REQUIRE(_dependencyMap[2], "wchat-app-kit");
+
+  var _utils = _$$_REQUIRE(_dependencyMap[3], "../utils");
+
+  var _TitleView = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[4], "../common/TitleView"));
+
+  var _reactNative = _$$_REQUIRE(_dependencyMap[5], "react-native");
+
+  var _NavUtils = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[6], "wchat-app-kit/src/NavUtils"));
+
+  var _jsxFileName = "/Users/chattle/Documents/wchat-git/wchat-app-demo/src/views/Home.js";
+  var View = _wchatAppKit.EUIKit.View;
+  var ScrollView = _wchatAppKit.RNKit.ScrollView,
+      Text = _wchatAppKit.RNKit.Text;
+
+  function HomeView(props) {
+    var _React$useState = _wchatAppKit.React.useState(["en"]),
+        _React$useState2 = (0, _slicedToArray2.default)(_React$useState, 2),
+        lan = _React$useState2[0],
+        setLan = _React$useState2[1];
+
+    var showToast = function showToast() {
+      _wchatAppKit.WChat.showToast("showToast");
+    };
+
+    var showLoading = function showLoading() {
+      _wchatAppKit.WChat.showLoading(true);
+    };
+
+    var cancelLoading = function cancelLoading() {
+      _wchatAppKit.WChat.cancelLoading();
+    };
+
+    var showAlert1 = function showAlert1() {
+      _wchatAppKit.WChat.showAlert("提示", "您将要进行什么提示", null, "确认");
+    };
+
+    var showAlert2 = function showAlert2() {
+      _wchatAppKit.WChat.showAlert("提示", "您将要进行什么提示", "取消", "确认").then(function (r) {
+        if (r == "right") {
+          _wchatAppKit.WChat.showToast("确认");
+        }
+      });
+    };
+
+    var navationHeight = function navationHeight() {
+      _wchatAppKit.WChat.getNavgationHeight().then(function (result) {
+        alert(JSON.stringify(result));
+      });
+    };
+
+    var getOs = function getOs() {
+      var os = _wchatAppKit.WChat.getOs().then(function (result) {
+        alert(JSON.stringify(result));
+      });
+    };
+
+    var statusBarHeight = function statusBarHeight() {
+      var height = _wchatAppKit.WChat.getStatusBarHeight();
+
+      alert(JSON.stringify(height));
+    };
+
+    var reqLogin = function reqLogin() {
+      _wchatAppKit.WChat.requestLogin().then(function (r) {
+        alert("code:" + r.code + ",state:" + r.state);
+      }, function (e) {
+        _wchatAppKit.WChat.showToast(e.msg, 2000);
+      });
+    };
+
+    var reqLocal = function reqLocal() {
+      _wchatAppKit.WChat.requestLocation().then(function (r) {
+        alert(JSON.stringify(r));
+      }, function (e) {
+        _wchatAppKit.WChat.showToast(e.msg, 2000);
+      });
+    };
+
+    var reqPhoto = function reqPhoto() {
+      _wchatAppKit.WChat.requestPhoto(6, 0, 0, '100').then(function (r) {
+        if (null != r) {
+          var photos = r.toString().split(",");
+          alert(photos);
+        }
+      }, function (e) {
+        _wchatAppKit.WChat.showToast(e.msg, 2000);
+      });
+    };
+
+    var reqChain = function reqChain() {
+      _wchatAppKit.WChat.requestChains().then(function (r) {
+        if (null != r) {
+          alert(JSON.stringify(r));
+        }
+      }, function (e) {
+        _wchatAppKit.WChat.showToast(e.msg, 2000);
+      });
+    };
+
+    var reqWallet = function reqWallet() {
+      _wchatAppKit.WChat.requestWallet(20).then(function (r) {
+        if (null != r) {
+          alert(JSON.stringify(r));
+        }
+      }, function (e) {
+        _wchatAppKit.WChat.showToast(e.msg, 2000);
+      });
+    };
+
+    var chat = function chat() {
+      _wchatAppKit.WChat.requestChat("private", "973450");
+    };
+
+    var share = function share() {
+      _wchatAppKit.WChat.share("title", "subtitle", "http://k.zol-img.com.cn/dcbbs/24715/a24714279_01000.jpg", "https://www.google.cn/");
+    };
+
+    var shareImg = function shareImg() {
+      _wchatAppKit.WChat.shareImg("http://k.zol-img.com.cn/dcbbs/24715/a24714279_01000.jpg");
+    };
+
+    var reqBindCode = function reqBindCode() {
+      _wchatAppKit.WChat.requestBindCode();
+    };
+
+    var reqIntParams = function reqIntParams() {
+      _wchatAppKit.WChat.requestIntentParams().then(function (r) {
+        alert(JSON.stringify(r));
+      }, function (e) {
+        _wchatAppKit.WChat.showToast(e.msg, 2000);
+      });
+    };
+
+    var reqCharge = function reqCharge() {
+      _wchatAppKit.WChat.requestCharge("20");
+    };
+
+    var reqBalance = function reqBalance() {
+      _wchatAppKit.WChat.requestBalance("20").then(function (r) {
+        if (r.code == "0") {
+          alert(JSON.stringify(r));
+        }
+      }, function (e) {
+        if (e.code = "20006") {
+          _wchatAppKit.WChat.showToast("需要请求授权余额接口");
+        } else {
+          _wchatAppKit.WChat.showToast(e.msg, 2000);
+        }
+      });
+    };
+
+    var reqPay = function reqPay() {
+      alert("先请求下单接口，获取参数");
+    };
+
+    var upload = function upload() {
+      var uploadFiles = "";
+      alert("多张选择的本地图片，逗号分隔");
+      return;
+    };
+
+    var reqData = function reqData() {
+      _wchatAppKit.WChat.showToast("参考 UserModel.js login(code,status)");
+    };
+
+    var toListPage = function toListPage() {
+      _NavUtils.default.push("demoList", {});
+    };
+
+    var navigation = function navigation() {
+      _NavUtils.default.push("bottomTab", {});
+    };
+
+    var tab = function tab() {
+      _NavUtils.default.push("topTab", {});
+    };
+
+    var changeLan = function changeLan() {
+      if (_utils.Language.strings.getLanguage() == "en") {
+        _utils.Language.strings.setLanguage('cn');
+
+        setLan("cn");
+      } else {
+        _utils.Language.strings.setLanguage('en');
+
+        setLan("en");
+      }
+    };
+
+    var log = function log() {
+      _wchatAppKit.WChat.log("tag", "messge");
+    };
+
+    return _wchatAppKit.React.createElement(View, {
+      style: styles.container,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 205
+      }
+    }, _wchatAppKit.React.createElement(_TitleView.default, {
+      title: 'Demo',
+      showline: true,
+      showback: false,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 206
+      }
+    }), _wchatAppKit.React.createElement(ScrollView, {
+      style: styles.scrollView,
+      showsVerticalScrollIndicator: false,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 207
+      }
+    }, _wchatAppKit.React.createElement(View, {
+      style: {
+        flex: 1,
+        justifyContent: 'center'
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 208
+      }
+    }, _wchatAppKit.React.createElement(Text, {
+      style: {
+        fontSize: 14,
+        color: _utils.Colors.title,
+        fontWeight: 'bold'
+      },
+      numberOfLines: 1,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 209
+      }
+    }, " WChat kit \u529F\u80FD "), _wchatAppKit.React.createElement(View, {
+      style: {
+        flex: 1,
+        flexWrap: 'wrap',
+        flexDirection: 'row'
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 210
+      }
+    }, _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
+      activeOpacity: 0.95,
+      onPress: function onPress() {
+        return showToast();
+      },
+      style: [styles.touchViewBg, {
+        width: 90,
+        marginTop: 12
+      }],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 213
+      }
+    }, _wchatAppKit.React.createElement(Text, {
+      style: [styles.touchTxt],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 214
+      }
+    }, " showToast ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
+      activeOpacity: 0.95,
+      onPress: function onPress() {
+        return showLoading();
+      },
+      style: [styles.touchViewBg, {
+        width: 100,
+        marginTop: 12
+      }],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 219
+      }
+    }, _wchatAppKit.React.createElement(Text, {
+      style: [styles.touchTxt],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 220
+      }
+    }, " showLoading ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
+      activeOpacity: 0.95,
+      onPress: function onPress() {
+        return showAlert1();
+      },
+      style: [styles.touchViewBg, {
+        width: 100,
+        marginTop: 12
+      }],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 222
+      }
+    }, _wchatAppKit.React.createElement(Text, {
+      style: [styles.touchTxt],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 223
+      }
+    }, " showAlert1 ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
+      activeOpacity: 0.95,
+      onPress: function onPress() {
+        return showAlert2();
+      },
+      style: [styles.touchViewBg, {
+        width: 100,
+        marginTop: 12
+      }],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 225
+      }
+    }, _wchatAppKit.React.createElement(Text, {
+      style: [styles.touchTxt],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 226
+      }
+    }, " showAlert2 ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
+      activeOpacity: 0.95,
+      onPress: function onPress() {
+        return navationHeight();
+      },
+      style: [styles.touchViewBg, {
+        width: 120,
+        marginTop: 12
+      }],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 228
+      }
+    }, _wchatAppKit.React.createElement(Text, {
+      style: [styles.touchTxt],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 229
+      }
+    }, " navationHeight ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
+      activeOpacity: 0.95,
+      onPress: function onPress() {
+        return getOs();
+      },
+      style: [styles.touchViewBg, {
+        width: 100,
+        marginTop: 12
+      }],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 232
+      }
+    }, _wchatAppKit.React.createElement(Text, {
+      style: [styles.touchTxt],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 233
+      }
+    }, " os ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
+      activeOpacity: 0.95,
+      onPress: function onPress() {
+        return statusBarHeight();
+      },
+      style: [styles.touchViewBg, {
+        width: 130,
+        marginTop: 12
+      }],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 235
+      }
+    }, _wchatAppKit.React.createElement(Text, {
+      style: [styles.touchTxt],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 236
+      }
+    }, " statusBarHeight ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
+      activeOpacity: 0.95,
+      onPress: function onPress() {
+        return reqLogin();
+      },
+      style: [styles.touchViewBg, {
+        width: 100,
+        marginTop: 12
+      }],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 238
+      }
+    }, _wchatAppKit.React.createElement(Text, {
+      style: [styles.touchTxt],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 239
+      }
+    }, " login ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
+      activeOpacity: 0.95,
+      onPress: function onPress() {
+        return reqLocal();
+      },
+      style: [styles.touchViewBg, {
+        width: 100,
+        marginTop: 12
+      }],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 242
+      }
+    }, _wchatAppKit.React.createElement(Text, {
+      style: [styles.touchTxt],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 243
+      }
+    }, " reqLocal ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
+      activeOpacity: 0.95,
+      onPress: function onPress() {
+        return reqPhoto();
+      },
+      style: [styles.touchViewBg, {
+        width: 100,
+        marginTop: 12
+      }],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 246
+      }
+    }, _wchatAppKit.React.createElement(Text, {
+      style: [styles.touchTxt],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 247
+      }
+    }, " reqPhoto ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
+      activeOpacity: 0.95,
+      onPress: function onPress() {
+        return reqChain();
+      },
+      style: [styles.touchViewBg, {
+        width: 100,
+        marginTop: 12
+      }],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 250
+      }
+    }, _wchatAppKit.React.createElement(Text, {
+      style: [styles.touchTxt],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 251
+      }
+    }, " reqChain ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
+      activeOpacity: 0.95,
+      onPress: function onPress() {
+        return reqWallet();
+      },
+      style: [styles.touchViewBg, {
+        width: 100,
+        marginTop: 12
+      }],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 254
+      }
+    }, _wchatAppKit.React.createElement(Text, {
+      style: [styles.touchTxt],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 255
+      }
+    }, " reqWallet ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
+      activeOpacity: 0.95,
+      onPress: function onPress() {
+        return chat();
+      },
+      style: [styles.touchViewBg, {
+        width: 100,
+        marginTop: 12
+      }],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 258
+      }
+    }, _wchatAppKit.React.createElement(Text, {
+      style: [styles.touchTxt],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 259
+      }
+    }, " chat ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
+      activeOpacity: 0.95,
+      onPress: function onPress() {
+        return share();
+      },
+      style: [styles.touchViewBg, {
+        width: 100,
+        marginTop: 12
+      }],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 262
+      }
+    }, _wchatAppKit.React.createElement(Text, {
+      style: [styles.touchTxt],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 263
+      }
+    }, " share ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
+      activeOpacity: 0.95,
+      onPress: function onPress() {
+        return shareImg();
+      },
+      style: [styles.touchViewBg, {
+        width: 100,
+        marginTop: 12
+      }],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 266
+      }
+    }, _wchatAppKit.React.createElement(Text, {
+      style: [styles.touchTxt],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 267
+      }
+    }, " shareImg ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
+      activeOpacity: 0.95,
+      onPress: function onPress() {
+        return reqBindCode();
+      },
+      style: [styles.touchViewBg, {
+        width: 160,
+        marginTop: 12
+      }],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 270
+      }
+    }, _wchatAppKit.React.createElement(Text, {
+      style: [styles.touchTxt],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 271
+      }
+    }, " requestBindCode ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
+      activeOpacity: 0.95,
+      onPress: function onPress() {
+        return reqIntParams();
+      },
+      style: [styles.touchViewBg, {
+        width: 180,
+        marginTop: 12
+      }],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 274
+      }
+    }, _wchatAppKit.React.createElement(Text, {
+      style: [styles.touchTxt],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 275
+      }
+    }, " requestIntenetParams ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
+      activeOpacity: 0.95,
+      onPress: function onPress() {
+        return reqCharge();
+      },
+      style: [styles.touchViewBg, {
+        width: 130,
+        marginTop: 12
+      }],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 278
+      }
+    }, _wchatAppKit.React.createElement(Text, {
+      style: [styles.touchTxt],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 279
+      }
+    }, " requestCharge ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
+      activeOpacity: 0.95,
+      onPress: function onPress() {
+        return reqBalance();
+      },
+      style: [styles.touchViewBg, {
+        width: 130,
+        marginTop: 12
+      }],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 282
+      }
+    }, _wchatAppKit.React.createElement(Text, {
+      style: [styles.touchTxt],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 283
+      }
+    }, " requestBalance ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
+      activeOpacity: 0.95,
+      onPress: function onPress() {
+        return reqPay();
+      },
+      style: [styles.touchViewBg, {
+        width: 130,
+        marginTop: 12
+      }],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 286
+      }
+    }, _wchatAppKit.React.createElement(Text, {
+      style: [styles.touchTxt],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 287
+      }
+    }, " requestPayment ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
+      activeOpacity: 0.95,
+      onPress: function onPress() {
+        return upload();
+      },
+      style: [styles.touchViewBg, {
+        width: 130,
+        marginTop: 12
+      }],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 290
+      }
+    }, _wchatAppKit.React.createElement(Text, {
+      style: [styles.touchTxt],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 291
+      }
+    }, " upload ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
+      activeOpacity: 0.95,
+      onPress: function onPress() {
+        return log();
+      },
+      style: [styles.touchViewBg, {
+        width: 130,
+        marginTop: 12
+      }],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 294
+      }
+    }, _wchatAppKit.React.createElement(Text, {
+      style: [styles.touchTxt],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 295
+      }
+    }, " log "))), _wchatAppKit.React.createElement(Text, {
+      style: {
+        fontSize: 14,
+        color: _utils.Colors.title,
+        fontWeight: 'bold',
+        marginTop: 24
+      },
+      numberOfLines: 1,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 300
+      }
+    }, " \u5176\u5B83\u529F\u80FD "), _wchatAppKit.React.createElement(View, {
+      style: {
+        flex: 1,
+        flexWrap: 'wrap',
+        flexDirection: 'row',
+        paddingBottom: 12,
+        marginBottom: 12
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 301
+      }
+    }, _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
+      activeOpacity: 0.95,
+      onPress: function onPress() {
+        return reqData();
+      },
+      style: [styles.touchViewBg, {
+        width: 90,
+        marginTop: 12
+      }],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 302
+      }
+    }, _wchatAppKit.React.createElement(Text, {
+      style: [styles.touchTxt],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 303
+      }
+    }, " \u7F51\u7EDC\u8BF7\u6C42 ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
+      activeOpacity: 0.95,
+      onPress: function onPress() {
+        return toListPage();
+      },
+      style: [styles.touchViewBg, {
+        width: 90,
+        marginTop: 12
+      }],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 306
+      }
+    }, _wchatAppKit.React.createElement(Text, {
+      style: [styles.touchTxt],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 307
+      }
+    }, " \u5217\u8868 ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
+      activeOpacity: 0.95,
+      onPress: function onPress() {
+        return navigation();
+      },
+      style: [styles.touchViewBg, {
+        width: 90,
+        marginTop: 12
+      }],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 310
+      }
+    }, _wchatAppKit.React.createElement(Text, {
+      style: [styles.touchTxt],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 311
+      }
+    }, " navigation ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
+      activeOpacity: 0.95,
+      onPress: function onPress() {
+        return tab();
+      },
+      style: [styles.touchViewBg, {
+        width: 90,
+        marginTop: 12
+      }],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 313
+      }
+    }, _wchatAppKit.React.createElement(Text, {
+      style: [styles.touchTxt],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 314
+      }
+    }, " ", _utils.Language.strings.tab, " ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
+      activeOpacity: 0.95,
+      onPress: function onPress() {
+        return changeLan();
+      },
+      style: [styles.touchViewBg, {
+        width: 90,
+        marginTop: 12
+      }],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 317
+      }
+    }, _wchatAppKit.React.createElement(Text, {
+      style: [styles.touchTxt],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 318
+      }
+    }, " ", _utils.Language.strings.lan, " ")), _wchatAppKit.React.createElement(_wchatAppKit.LinearGradient, {
+      start: {
+        x: 0.25,
+        y: 0.25
+      },
+      end: {
+        x: 0.75,
+        y: 0.75
+      },
+      colors: ['red', 'green', 'black'],
+      style: {
+        width: 90,
+        height: 36,
+        marginTop: 10
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 321
+      }
+    })), _wchatAppKit.React.createElement(Text, {
+      style: {
+        fontSize: 14,
+        color: _utils.Colors.title,
+        fontWeight: 'bold',
+        marginBottom: 24
+      },
+      numberOfLines: 1,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 326
+      }
+    }, " \u5176\u5B83\u529F\u80FD\u53C2\u8003\u5B98\u65B9\u6216react-native-elements "))));
+  }
+
+  var styles = {
+    container: {
+      flex: 1,
+      backgroundColor: _utils.Colors.bg,
+      paddingBottom: _utils.Screen.isIphoneX() ? 22 : 0
+    },
+    scrollView: {
+      flex: 1,
+      padding: 12
+    },
+    touchViewBg: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: 36,
+      backgroundColor: "#06c260",
+      marginRight: 12
+    },
+    touchTxt: {
+      fontSize: 14,
+      color: _utils.Colors.white
+    }
+  };
+},"src_views_Home",["node_modules_@babel_runtime_helpers_interopRequireDefault","node_modules_@babel_runtime_helpers_slicedToArray","node_modules_wchat-app-kit_index","src_utils_index","src_common_TitleView","react-native-implementation","node_modules_wchat-app-kit_src_NavUtils"],"src/views/Home.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, "Api", {
+    enumerable: true,
+    get: function get() {
+      return _Api.default;
+    }
+  });
+  Object.defineProperty(exports, "Colors", {
+    enumerable: true,
+    get: function get() {
+      return _Colors.default;
+    }
+  });
+  Object.defineProperty(exports, "Screen", {
+    enumerable: true,
+    get: function get() {
+      return _Screen.default;
+    }
+  });
+  Object.defineProperty(exports, "Globle", {
+    enumerable: true,
+    get: function get() {
+      return _Globle.default;
+    }
+  });
+  Object.defineProperty(exports, "Images", {
+    enumerable: true,
+    get: function get() {
+      return _Images.default;
+    }
+  });
+  Object.defineProperty(exports, "Http", {
+    enumerable: true,
+    get: function get() {
+      return _Http.default;
+    }
+  });
+  Object.defineProperty(exports, "StoreUtils", {
+    enumerable: true,
+    get: function get() {
+      return _StoreUtils.default;
+    }
+  });
+  Object.defineProperty(exports, "Language", {
+    enumerable: true,
+    get: function get() {
+      return _Language.default;
+    }
+  });
+
+  var _Api = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[1], "./Api"));
+
+  var _Colors = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[2], "./Colors"));
+
+  var _Screen = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[3], "./Screen"));
+
+  var _Globle = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[4], "./Globle"));
+
+  var _Images = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[5], "./Images"));
+
+  var _Http = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[6], "./Http"));
+
+  var _StoreUtils = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[7], "./StoreUtils"));
+
+  var _Language = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[8], "./Language"));
+},"src_utils_index",["node_modules_@babel_runtime_helpers_interopRequireDefault","src_utils_Api","src_utils_Colors","src_utils_Screen","src_utils_Globle","src_utils_Images","src_utils_Http","src_utils_StoreUtils","src_utils_Language"],"src/utils/index.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+  var _default = {
+    wchatLogin: "https://wchat.com/api/auth/userinfo"
+  };
+  exports.default = _default;
+},"src_utils_Api",[],"src/utils/Api.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+  var _default = {
+    bg: "#F6F6F6",
+    main: "#00c853",
+    gray: "#9e9e9e",
+    white: "#ffffff",
+    line: "#eeeeee",
+    title: "#212121"
+  };
+  exports.default = _default;
+},"src_utils_Colors",[],"src/utils/Colors.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+
+  var _wchatAppKit = _$$_REQUIRE(_dependencyMap[0], "wchat-app-kit");
+
+  var Dimensions = _wchatAppKit.RNKit.Dimensions,
+      Platform = _wchatAppKit.RNKit.Platform,
+      NativeModules = _wchatAppKit.RNKit.NativeModules,
+      DeviceInfo = _wchatAppKit.RNKit.DeviceInfo;
+  var X_WIDTH = 375;
+  var X_HEIGHT = 812;
+
+  var _Dimensions$get = Dimensions.get('window'),
+      D_HEIGHT = _Dimensions$get.height,
+      D_WIDTH = _Dimensions$get.width;
+
+  var _NativeModules$Platfo = NativeModules.PlatformConstants,
+      PlatformConstants = _NativeModules$Platfo === void 0 ? {} : _NativeModules$Platfo;
+
+  var _ref = PlatformConstants.reactNativeVersion || {},
+      _ref$minor = _ref.minor,
+      minor = _ref$minor === void 0 ? 0 : _ref$minor;
+
+  var _default = {
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
+    isIphoneX: function isIphoneX() {
+      if ("android" === 'web') return false;
+
+      if (minor >= 50) {
+        return DeviceInfo.isIPhoneX_deprecated;
+      }
+
+      return "android" === 'ios' && (D_HEIGHT === X_HEIGHT && D_WIDTH === X_WIDTH || D_HEIGHT === X_WIDTH && D_WIDTH === X_HEIGHT);
+    }
+  };
+  exports.default = _default;
+},"src_utils_Screen",["node_modules_wchat-app-kit_index"],"src/utils/Screen.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+  var _default = {
+    login: null,
+    navHeight: 50,
+    statusHeight: 20
+  };
+  exports.default = _default;
+},"src_utils_Globle",[],"src/utils/Globle.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+  var _default = {
+    tab_1: {
+      uri: "https://img.wchat.im/demo/tab_1.png"
+    },
+    tab_1_h: {
+      uri: "https://img.wchat.im/demo/tab_1_h.png"
+    },
+    tab_2: {
+      uri: "https://img.wchat.im/demo/tab_2.png"
+    },
+    tab_2_h: {
+      uri: "https://img.wchat.im/demo/tab_2_h.png"
+    },
+    tab_3: {
+      uri: "https://img.wchat.im/demo/tab_3.png"
+    },
+    tab_3_h: {
+      uri: "https://img.wchat.im/demo/tab_3_h.png"
+    },
+    icon_back: {
+      uri: "https://img.wchat.im/demo/icon_back.png"
+    }
+  };
+  exports.default = _default;
+},"src_utils_Images",[],"src/utils/Images.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+
+  var _defineProperty2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[1], "@babel/runtime/helpers/defineProperty"));
+
+  var _Globle = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[2], "./Globle"));
+
+  function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+  function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+  var post = function post(url, body) {
+    return request(url, "POST", body);
+  };
+
+  var get = function get(url, body) {
+    return request(url, "GET", body);
+  };
+
+  var request = function request(url, method, body) {
+    return new Promise(function (resolve, reject) {
+      var logininfo = {};
+
+      if (_Globle.default.login) {
+        logininfo = {
+          uid: _Globle.default.login.id,
+          token: _Globle.default.login.token
+        };
+      }
+
+      fetch(url, {
+        method: method,
+        headers: _objectSpread({
+          'Content-Type': 'application/json;charset=utf-8'
+        }, logininfo),
+        body: body ? JSON.stringify(body) : ""
+      }).then(function (response) {
+        return response.json();
+      }).then(function (responseData) {
+        resolve(responseData);
+      }).catch(function (error) {
+        resolve({
+          code: "500",
+          msg: "request error"
+        });
+      });
+    });
+  };
+
+  var _default = {
+    post: post,
+    get: get,
+    request: request
+  };
+  exports.default = _default;
+},"src_utils_Http",["node_modules_@babel_runtime_helpers_interopRequireDefault","node_modules_@babel_runtime_helpers_defineProperty","src_utils_Globle"],"src/utils/Http.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireWildcard = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireWildcard");
+
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[1], "@babel/runtime/helpers/interopRequireDefault");
+
+  var _react = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[2], "react"));
+
+  var _reactNative = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[3], "react-native"));
+
+  _$$_REQUIRE(_dependencyMap[4], "react-native-gesture-handler");
+
+  var _reactNavigation = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[5], "react-navigation"));
+
+  var _reactNativeElements = _$$_REQUIRE(_dependencyMap[6], "react-native-elements");
+
+  var _reactNativeWebview = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[7], "react-native-webview"));
+
+  var _WChat = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[8], "./src/WChat"));
+
+  var _Storage = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[9], "./src/Storage"));
+
+  var _NavUtils = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[10], "./src/NavUtils"));
+
+  var _ScrollableTabView = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[11], "./src/ScrollableTabView"));
+
+  var _reactNativeViewShot = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[12], "react-native-view-shot"));
+
+  var _reactNativeQrcodeSvg = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[13], "react-native-qrcode-svg"));
+
+  var _reactNativeSvg = _interopRequireWildcard(_$$_REQUIRE(_dependencyMap[14], "react-native-svg"));
+
+  var _reactNativeLinearGradient = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[15], "react-native-linear-gradient"));
+
+  var _reactNativeLocalization = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[16], "react-native-localization"));
+
+  var ScrollableTabBar = _ScrollableTabView.default.ScrollableTabBar;
+  var View = _reactNative.default.View,
+      Image = _reactNative.default.Image;
+  module.exports = {
+    Navigation: _reactNavigation.default,
+    NavUtils: _NavUtils.default,
+    EUIKit: {
+      Shot: _reactNativeViewShot.default,
+      QRCode: _reactNativeQrcodeSvg.default,
+      View: View,
+      Badge: _reactNativeElements.Badge,
+      Button: _reactNativeElements.Button,
+      ButtonGroup: _reactNativeElements.ButtonGroup,
+      Card: _reactNativeElements.Card,
+      Input: _reactNativeElements.Input,
+      ListItem: _reactNativeElements.ListItem,
+      PricingCard: _reactNativeElements.PricingCard,
+      Tooltip: _reactNativeElements.Tooltip,
+      SocialIcon: _reactNativeElements.SocialIcon,
+      Text: _reactNativeElements.Text,
+      Divider: _reactNativeElements.Divider,
+      CheckBox: _reactNativeElements.CheckBox,
+      SearchBar: _reactNativeElements.SearchBar,
+      Icon: _reactNativeElements.Icon,
+      colors: _reactNativeElements.colors,
+      getIconType: _reactNativeElements.getIconType,
+      registerCustomIconType: _reactNativeElements.registerCustomIconType,
+      normalize: _reactNativeElements.normalize,
+      Tile: _reactNativeElements.Tile,
+      Slider: _reactNativeElements.Slider,
+      Avatar: _reactNativeElements.Avatar,
+      Rating: _reactNativeElements.Rating,
+      AirbnbRating: _reactNativeElements.AirbnbRating,
+      Header: _reactNativeElements.Header,
+      Overlay: _reactNativeElements.Overlay,
+      ThemeProvider: _reactNativeElements.ThemeProvider,
+      ThemeConsumer: _reactNativeElements.ThemeConsumer,
+      ThemeContext: _reactNativeElements.ThemeContext,
+      withBadge: _reactNativeElements.withBadge,
+      withTheme: _reactNativeElements.withTheme,
+      Image: Image
+    },
+    RNKit: _reactNative.default,
+    WebView: _reactNativeWebview.default,
+    React: _react.default,
+    WChat: _WChat.default,
+    Storage: _Storage.default,
+    LinearGradient: _reactNativeLinearGradient.default,
+    LocalizedStrings: _reactNativeLocalization.default,
+    ScrollableTabView: _ScrollableTabView.default,
+    ScrollableTabBar: ScrollableTabBar,
+    Svg: {
+      Svg: _reactNativeSvg.default,
+      Circle: _reactNativeSvg.Circle,
+      Ellipse: _reactNativeSvg.Ellipse,
+      G: _reactNativeSvg.G,
+      Text: _reactNativeSvg.default.Text,
+      TSpan: _reactNativeSvg.TSpan,
+      TextPath: _reactNativeSvg.TextPath,
+      Path: _reactNativeSvg.Path,
+      Polygon: _reactNativeSvg.Polygon,
+      Polyline: _reactNativeSvg.Polyline,
+      Line: _reactNativeSvg.Line,
+      Rect: _reactNativeSvg.Rect,
+      Use: _reactNativeSvg.Use,
+      Image: _reactNativeSvg.default.Image,
+      Symbol: _reactNativeSvg.Symbol,
+      Defs: _reactNativeSvg.Defs,
+      RadialGradient: _reactNativeSvg.RadialGradient,
+      Stop: _reactNativeSvg.Stop,
+      ClipPath: _reactNativeSvg.ClipPath,
+      Pattern: _reactNativeSvg.Pattern,
+      Mask: _reactNativeSvg.Mask
+    }
+  };
+},"node_modules_wchat-app-kit_index",["node_modules_@babel_runtime_helpers_interopRequireWildcard","node_modules_@babel_runtime_helpers_interopRequireDefault","node_modules_react_index","react-native-implementation","node_modules_react-native-gesture-handler_index","node_modules_react-navigation_src_react-navigation","node_modules_react-native-elements_src_index","node_modules_react-native-webview_index","node_modules_wchat-app-kit_src_WChat","node_modules_wchat-app-kit_src_Storage","node_modules_wchat-app-kit_src_NavUtils","node_modules_wchat-app-kit_src_ScrollableTabView_index","node_modules_react-native-view-shot_src_index","node_modules_react-native-qrcode-svg_index","node_modules_react-native-svg_src_index.ts","node_modules_react-native-linear-gradient_index.android","node_modules_react-native-localization_lib_LocalizedStrings"],"node_modules/wchat-app-kit/index.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+
+  var _wchatAppKit = _$$_REQUIRE(_dependencyMap[0], "wchat-app-kit");
+
+  var strings = new _wchatAppKit.LocalizedStrings({
+    en: {
+      tab: "tab",
+      lan: "English"
+    },
+    cn: {
+      tab: "页签",
+      lan: "中文"
+    }
+  });
+  var _default = {
+    strings: strings
+  };
+  exports.default = _default;
+},"src_utils_Language",["node_modules_wchat-app-kit_index"],"src/utils/Language.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = TitleView;
+
+  var _wchatAppKit = _$$_REQUIRE(_dependencyMap[1], "wchat-app-kit");
+
+  var _utils = _$$_REQUIRE(_dependencyMap[2], "../utils");
+
+  var _HLineView = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[3], "./HLineView"));
+
+  var _NavUtils = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[4], "wchat-app-kit/src/NavUtils"));
+
+  var _jsxFileName = "/Users/chattle/Documents/wchat-git/wchat-app-demo/src/common/TitleView.js";
+  var TouchableOpacity = _wchatAppKit.RNKit.TouchableOpacity;
+  var View = _wchatAppKit.EUIKit.View,
+      Image = _wchatAppKit.EUIKit.Image,
+      Text = _wchatAppKit.EUIKit.Text;
+
+  function TitleView(props) {
+    return _wchatAppKit.React.createElement(View, {
+      style: {
+        paddingTop: _utils.Globle.statusHeight,
+        backgroundColor: '#fff'
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 12
+      }
+    }, _wchatAppKit.React.createElement(View, {
+      style: styles.topNav,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 13
+      }
+    }, _wchatAppKit.React.createElement(View, {
+      style: styles.itemStyle,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 14
+      }
+    }, _wchatAppKit.React.createElement(TouchableOpacity, {
+      onPress: function onPress() {
+        props.showback ? _NavUtils.default.pop() : {};
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 15
+      }
+    }, _wchatAppKit.React.createElement(View, {
+      style: styles.backView,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 16
+      }
+    }, props.showback && _wchatAppKit.React.createElement(Image, {
+      style: [styles.backIcon, props.iconStyle],
+      source: _utils.Images.icon_back,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 17
+      }
+    }), _wchatAppKit.React.createElement(Text, {
+      numberOfLines: 1,
+      style: [styles.title, props.titleStyle],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 18
+      }
+    }, props.title)))), props.showline && _wchatAppKit.React.createElement(_HLineView.default, {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 22
+      }
+    })));
+  }
+
+  var styles = _wchatAppKit.RNKit.StyleSheet.create({
+    topNav: {
+      flexDirection: 'column',
+      justifyContent: 'center',
+      height: _utils.Globle.navHeight
+    },
+    itemStyle: {
+      flex: 1,
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center'
+    },
+    backView: {
+      height: '100%',
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginRight: 180
+    },
+    backIcon: {
+      marginLeft: 10,
+      width: 18,
+      height: 18
+    },
+    title: {
+      fontSize: 17,
+      color: _utils.Colors.title,
+      marginLeft: 8
+    }
+  });
+},"src_common_TitleView",["node_modules_@babel_runtime_helpers_interopRequireDefault","node_modules_wchat-app-kit_index","src_utils_index","src_common_HLineView","node_modules_wchat-app-kit_src_NavUtils"],"src/common/TitleView.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = HLineView;
+
+  var _wchatAppKit = _$$_REQUIRE(_dependencyMap[0], "wchat-app-kit");
+
+  var _utils = _$$_REQUIRE(_dependencyMap[1], "../utils");
+
+  var _jsxFileName = "/Users/chattle/Documents/wchat-git/wchat-app-demo/src/common/HLineView.js";
+  var View = _wchatAppKit.EUIKit.View;
+
+  function HLineView(props) {
+    return _wchatAppKit.React.createElement(View, {
+      style: [{
+        width: _utils.Screen.width,
+        height: 0.5,
+        backgroundColor: _utils.Colors.line
+      }, props.style],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 8
+      }
+    });
+  }
+},"src_common_HLineView",["node_modules_wchat-app-kit_index","src_utils_index"],"src/common/HLineView.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = Splash;
+
+  var _wchatAppKit = _$$_REQUIRE(_dependencyMap[1], "wchat-app-kit");
+
+  var _SplashModel = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[2], "../models/SplashModel"));
+
+  var _jsxFileName = "/Users/chattle/Documents/wchat-git/wchat-app-demo/src/views/Splash.js";
+  var View = _wchatAppKit.EUIKit.View,
+      Text = _wchatAppKit.EUIKit.Text;
+
+  function Splash(props) {
+    var model = new _SplashModel.default(props, {}, {});
+
+    _wchatAppKit.React.useEffect(function () {
+      model.initConfig();
+    }, []);
+
+    return _wchatAppKit.React.createElement(View, {
+      style: {
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center'
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 17
+      }
+    });
+  }
+},"src_views_Splash",["node_modules_@babel_runtime_helpers_interopRequireDefault","node_modules_wchat-app-kit_index","src_models_SplashModel"],"src/views/Splash.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+
+  var _classCallCheck2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[1], "@babel/runtime/helpers/classCallCheck"));
+
+  var _createClass2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[2], "@babel/runtime/helpers/createClass"));
+
+  var _possibleConstructorReturn2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[3], "@babel/runtime/helpers/possibleConstructorReturn"));
+
+  var _getPrototypeOf2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[4], "@babel/runtime/helpers/getPrototypeOf"));
+
+  var _inherits2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[5], "@babel/runtime/helpers/inherits"));
+
+  var _wchatAppKit = _$$_REQUIRE(_dependencyMap[6], "wchat-app-kit");
+
+  var _BaseModel2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[7], "./BaseModel"));
+
+  var _utils = _$$_REQUIRE(_dependencyMap[8], "../utils");
+
+  var SplashModel = function (_BaseModel) {
+    (0, _inherits2.default)(SplashModel, _BaseModel);
+
+    function SplashModel(props, vars, funs) {
+      (0, _classCallCheck2.default)(this, SplashModel);
+      return (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(SplashModel).call(this, props, vars, funs));
+    }
+
+    (0, _createClass2.default)(SplashModel, [{
+      key: "initConfig",
+      value: function initConfig() {
+        _wchatAppKit.WChat.getNavgationHeight().then(function (height) {
+          _utils.Globle.navHeight = height;
+        });
+
+        _wchatAppKit.WChat.getStatusBarHeight().then(function (height) {
+          _utils.Globle.statusHeight = height;
+        });
+
+        _wchatAppKit.NavUtils.init(this.props.navigation);
+
+        _wchatAppKit.NavUtils.reset("home");
+      }
+    }]);
+    return SplashModel;
+  }(_BaseModel2.default);
+
+  exports.default = SplashModel;
+},"src_models_SplashModel",["node_modules_@babel_runtime_helpers_interopRequireDefault","node_modules_@babel_runtime_helpers_classCallCheck","node_modules_@babel_runtime_helpers_createClass","node_modules_@babel_runtime_helpers_possibleConstructorReturn","node_modules_@babel_runtime_helpers_getPrototypeOf","node_modules_@babel_runtime_helpers_inherits","node_modules_wchat-app-kit_index","src_models_BaseModel","src_utils_index"],"src/models/SplashModel.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+
+  var _classCallCheck2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[1], "@babel/runtime/helpers/classCallCheck"));
+
+  var BaseModel = function BaseModel(props, vars, funs) {
+    (0, _classCallCheck2.default)(this, BaseModel);
+    this.props = props;
+    this.vars = vars;
+    this.funs = funs;
+  };
+
+  exports.default = BaseModel;
+},"src_models_BaseModel",["node_modules_@babel_runtime_helpers_interopRequireDefault","node_modules_@babel_runtime_helpers_classCallCheck"],"src/models/BaseModel.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = DemoListView;
+
+  var _slicedToArray2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[1], "@babel/runtime/helpers/slicedToArray"));
+
+  var _wchatAppKit = _$$_REQUIRE(_dependencyMap[2], "wchat-app-kit");
+
+  var _TitleView = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[3], "../common/TitleView"));
+
+  var _ListView = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[4], "../common/ListView"));
+
+  var _UserModel = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[5], "../models/UserModel"));
+
+  var _DemoListItem = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[6], "./DemoListItem"));
+
+  var _utils = _$$_REQUIRE(_dependencyMap[7], "../utils");
+
+  var _jsxFileName = "/Users/chattle/Documents/wchat-git/wchat-app-demo/src/views/DemoList.js";
+  var View = _wchatAppKit.EUIKit.View;
+
+  function DemoListView(props) {
+    var _React$useState = _wchatAppKit.React.useState([]),
+        _React$useState2 = (0, _slicedToArray2.default)(_React$useState, 2),
+        datas = _React$useState2[0],
+        setDatas = _React$useState2[1];
+
+    var model = new _UserModel.default(props, {
+      datas: datas
+    }, {
+      setDatas: setDatas
+    });
+    return _wchatAppKit.React.createElement(View, {
+      style: styles.container,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 17
+      }
+    }, _wchatAppKit.React.createElement(_TitleView.default, {
+      title: '列表演示',
+      showback: true,
+      showline: true,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 18
+      }
+    }), _wchatAppKit.React.createElement(_ListView.default, {
+      emptyTitle: "\u7A7A\u6570\u636E",
+      emptySubTitle: "\u8D76\u7D27\u641E\u70B9\u6570\u636E\u5427",
+      numColumns: 1,
+      showEmpty: true,
+      refresh: function refresh(page, endLoading) {
+        return model.demoList(page, page, endLoading);
+      },
+      renderHeader: null,
+      renderItem: function renderItem(_ref) {
+        var item = _ref.item,
+            index = _ref.index;
+        return _wchatAppKit.React.createElement(_DemoListItem.default, {
+          index: index,
+          data: item,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 26
+          }
+        });
+      },
+      data: datas,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 19
+      }
+    }));
+  }
+
+  var styles = {
+    container: {
+      flex: 1,
+      backgroundColor: _utils.Colors.bg,
+      paddingBottom: _utils.Screen.isIphoneX() ? 22 : 0
+    }
+  };
+},"src_views_DemoList",["node_modules_@babel_runtime_helpers_interopRequireDefault","node_modules_@babel_runtime_helpers_slicedToArray","node_modules_wchat-app-kit_index","src_common_TitleView","src_common_ListView","src_models_UserModel","src_views_DemoListItem","src_utils_index"],"src/views/DemoList.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = ListView;
+
+  var _regenerator = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[1], "@babel/runtime/regenerator"));
+
+  var _slicedToArray2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[2], "@babel/runtime/helpers/slicedToArray"));
+
+  var _wchatAppKit = _$$_REQUIRE(_dependencyMap[3], "wchat-app-kit");
+
+  var _utils = _$$_REQUIRE(_dependencyMap[4], "../utils");
+
+  var _jsxFileName = "/Users/chattle/Documents/wchat-git/wchat-app-demo/src/common/ListView.js";
+  var View = _wchatAppKit.EUIKit.View,
+      Text = _wchatAppKit.EUIKit.Text,
+      Image = _wchatAppKit.EUIKit.Image;
+  var FlatList = _wchatAppKit.RNKit.FlatList,
+      RefreshControl = _wchatAppKit.RNKit.RefreshControl,
+      ActivityIndicator = _wchatAppKit.RNKit.ActivityIndicator;
+
+  function ListView(props) {
+    var _this = this;
+
+    var _React$useState = _wchatAppKit.React.useState(true),
+        _React$useState2 = (0, _slicedToArray2.default)(_React$useState, 2),
+        isFirst = _React$useState2[0],
+        setIsFirst = _React$useState2[1];
+
+    var _React$useState3 = _wchatAppKit.React.useState(1),
+        _React$useState4 = (0, _slicedToArray2.default)(_React$useState3, 2),
+        page = _React$useState4[0],
+        setPage = _React$useState4[1];
+
+    var _React$useState5 = _wchatAppKit.React.useState(false),
+        _React$useState6 = (0, _slicedToArray2.default)(_React$useState5, 2),
+        headLoading = _React$useState6[0],
+        setHeadLoading = _React$useState6[1];
+
+    var _React$useState7 = _wchatAppKit.React.useState(false),
+        _React$useState8 = (0, _slicedToArray2.default)(_React$useState7, 2),
+        bottomLoading = _React$useState8[0],
+        setBottomLoading = _React$useState8[1];
+
+    var isLoading = false;
+
+    var endLoading = function endLoading() {
+      setIsFirst(false);
+      setHeadLoading(false);
+      setBottomLoading(false);
+      isLoading = false;
+      _this.isScrollDown = false;
+    };
+
+    _wchatAppKit.React.useEffect(function () {
+      loadData();
+    }, [page]);
+
+    var loadData = function loadData() {
+      return _regenerator.default.async(function loadData$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              if (!isLoading) {
+                _context.next = 2;
+                break;
+              }
+
+              return _context.abrupt("return");
+
+            case 2:
+              isLoading = true;
+              if (page == 1 && !isFirst) setHeadLoading(true);
+              if (page > 1) setBottomLoading(true);
+              props.refresh(page, endLoading);
+
+            case 6:
+            case "end":
+              return _context.stop();
+          }
+        }
+      });
+    };
+
+    var uuid = function uuid() {
+      return "item_" + Math.random().toString(7);
+    };
+
+    var _footer = function _footer() {
+      return _wchatAppKit.React.createElement(View, {
+        style: {
+          flexDirection: 'column'
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 41
+        }
+      }, _wchatAppKit.React.createElement(View, {
+        style: {
+          flexDirection: 'row',
+          height: 40,
+          justifyContent: 'center',
+          alignItems: 'center'
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 42
+        }
+      }, bottomLoading && _wchatAppKit.React.createElement(ActivityIndicator, {
+        size: "small",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 44
+        }
+      })));
+    };
+
+    var _emptyView = function _emptyView() {
+      if (props.showEmpty && page == 1 && (null == props.data || props.data.length == 0) && !isFirst) {
+        return _wchatAppKit.React.createElement(View, {
+          style: {
+            flex: 1,
+            height: _utils.Screen.height * 0.5,
+            justifyContent: 'center',
+            alignItems: 'center'
+          },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 53
+          }
+        }, _wchatAppKit.React.createElement(View, {
+          style: {
+            flexDirection: 'column',
+            alignItems: 'center'
+          },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 54
+          }
+        }, _wchatAppKit.React.createElement(Image, {
+          source: props.emptyImage ? props.emptyImage : _utils.Images.empty,
+          style: {
+            width: 74,
+            height: 74
+          },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 55
+          }
+        }), _wchatAppKit.React.createElement(Text, {
+          style: {
+            color: '#666666',
+            fontSize: 14,
+            marginTop: 15
+          },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 56
+          }
+        }, props.emptyTitle ? props.emptyTitle : '没有找到相关内容'), _wchatAppKit.React.createElement(Text, {
+          style: {
+            color: '#999999',
+            fontSize: 12,
+            marginTop: 5
+          },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 57
+          }
+        }, props.emptySubTitle ? props.emptySubTitle : '')));
+      } else {
+        return null;
+      }
+    };
+
+    var _onScrollBeginDrag = function _onScrollBeginDrag(event) {
+      var offsetY = event.nativeEvent.contentOffset.y;
+      _this.scrollViewStartOffsetY = offsetY;
+      props.onScrollBeginDrag && props.onScrollBeginDrag(event);
+    };
+
+    var _onScroll = function _onScroll(event) {
+      var offsetY = event.nativeEvent.contentOffset.y;
+
+      if (_this.scrollViewStartOffsetY > offsetY) {
+        props.onScrollUp && props.onScrollUp(event);
+      } else if (_this.scrollViewStartOffsetY < offsetY) {
+        props.onScrollDown && props.onScrollDown(event);
+        _this.isScrollDown = true;
+      }
+
+      props.onScroll && props.onScroll(event);
+    };
+
+    return _wchatAppKit.React.createElement(FlatList, {
+      refreshControl: _wchatAppKit.React.createElement(RefreshControl, {
+        refreshing: headLoading,
+        colors: [_utils.Colors.main],
+        progressBackgroundColor: "#ffffff",
+        onRefresh: function onRefresh() {
+          if (!isLoading) {
+            if (page == 1) {
+              loadData();
+            } else {
+              setPage(1);
+            }
+          }
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 92
+        }
+      }),
+      keyExtractor: function keyExtractor() {
+        return uuid();
+      },
+      initialNumToRender: 15,
+      maxToRenderPerBatch: 6,
+      numColumns: props.numColumns ? props.numColumns : 1,
+      onEndReached: function onEndReached() {
+        if (_this.isScrollDown) {
+          _this.isScrollDown = false;
+          !isLoading && setPage(page + 1);
+        }
+      },
+      onScrollBeginDrag: _onScrollBeginDrag,
+      onScroll: _onScroll,
+      onEndReachedThreshold: 0.1,
+      ListHeaderComponent: props.renderHeader,
+      ListFooterComponent: _footer,
+      ListEmptyComponent: _emptyView,
+      data: props.data,
+      getItemLayout: props.getItemLayout,
+      renderItem: props.renderItem,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 90
+      }
+    });
+  }
+},"src_common_ListView",["node_modules_@babel_runtime_helpers_interopRequireDefault","node_modules_@babel_runtime_regenerator_index","node_modules_@babel_runtime_helpers_slicedToArray","node_modules_wchat-app-kit_index","src_utils_index"],"src/common/ListView.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+
+  var _classCallCheck2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[1], "@babel/runtime/helpers/classCallCheck"));
+
+  var _createClass2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[2], "@babel/runtime/helpers/createClass"));
+
+  var _possibleConstructorReturn2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[3], "@babel/runtime/helpers/possibleConstructorReturn"));
+
+  var _getPrototypeOf2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[4], "@babel/runtime/helpers/getPrototypeOf"));
+
+  var _inherits2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[5], "@babel/runtime/helpers/inherits"));
+
+  var _wchatAppKit = _$$_REQUIRE(_dependencyMap[6], "wchat-app-kit");
+
+  var _BaseModel2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[7], "./BaseModel"));
+
+  var _UserService = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[8], "../services/UserService"));
+
+  var _Datas = _$$_REQUIRE(_dependencyMap[9], "../json/Datas");
+
+  var SplashModel = function (_BaseModel) {
+    (0, _inherits2.default)(SplashModel, _BaseModel);
+
+    function SplashModel(props, vars, funs) {
+      (0, _classCallCheck2.default)(this, SplashModel);
+      return (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(SplashModel).call(this, props, vars, funs));
+    }
+
+    (0, _createClass2.default)(SplashModel, [{
+      key: "login",
+      value: function login(code, status) {
+        _UserService.default.login({
+          code: code,
+          status: status
+        }).then(function (result) {
+          if (result.code == "0") {
+            alert("login success");
+          } else {
+            _wchatAppKit.WChat.showToast(result.msg, 2000);
+          }
+        });
+      }
+    }, {
+      key: "demoList",
+      value: function demoList(page, endLoading) {
+        var datas = this.vars.datas;
+        var setDatas = this.funs.setDatas;
+
+        if (page == 1) {
+          setDatas(_Datas.ds);
+        } else {
+          setDatas(datas.concat(_Datas.ds));
+        }
+      }
+    }]);
+    return SplashModel;
+  }(_BaseModel2.default);
+
+  exports.default = SplashModel;
+},"src_models_UserModel",["node_modules_@babel_runtime_helpers_interopRequireDefault","node_modules_@babel_runtime_helpers_classCallCheck","node_modules_@babel_runtime_helpers_createClass","node_modules_@babel_runtime_helpers_possibleConstructorReturn","node_modules_@babel_runtime_helpers_getPrototypeOf","node_modules_@babel_runtime_helpers_inherits","node_modules_wchat-app-kit_index","src_models_BaseModel","src_services_UserService","src_json_Datas"],"src/models/UserModel.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+
+  var _regenerator = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[1], "@babel/runtime/regenerator"));
+
+  var _defineProperty2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[2], "@babel/runtime/helpers/defineProperty"));
+
+  var _utils = _$$_REQUIRE(_dependencyMap[3], "../utils");
+
+  function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+  function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+  var _default = {
+    login: function login(params) {
+      var resp;
+      return _regenerator.default.async(function login$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return _regenerator.default.awrap(_utils.Http.post(_utils.Api.wchatLogin, params));
+
+            case 2:
+              resp = _context.sent;
+
+              if (!(resp.code == "0")) {
+                _context.next = 7;
+                break;
+              }
+
+              _utils.Globle.login = _objectSpread({}, resp.data);
+              _context.next = 7;
+              return _regenerator.default.awrap(_utils.StoreUtils.saveLoginUser(_utils.Globle.login));
+
+            case 7:
+              return _context.abrupt("return", resp);
+
+            case 8:
+            case "end":
+              return _context.stop();
+          }
+        }
+      });
+    },
+    demoList: function demoList(params) {
+      return _regenerator.default.async(function demoList$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              return _context2.abrupt("return", null);
+
+            case 1:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      });
+    }
+  };
+  exports.default = _default;
+},"src_services_UserService",["node_modules_@babel_runtime_helpers_interopRequireDefault","node_modules_@babel_runtime_regenerator_index","node_modules_@babel_runtime_helpers_defineProperty","src_utils_index"],"src/services/UserService.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.ds = void 0;
+  var ds = [{
+    "title": "PYP"
+  }, {
+    "title": "USDT"
+  }, {
+    "title": "EOS"
+  }, {
+    "title": "BTC"
+  }, {
+    "title": "ETH"
+  }, {
+    "title": "YAS"
+  }, {
+    "title": "EIDOS"
+  }, {
+    "title": "NDX"
+  }];
+  exports.ds = ds;
+},"src_json_Datas",[],"src/json/Datas.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = DemoListItemView;
+
+  var _wchatAppKit = _$$_REQUIRE(_dependencyMap[1], "wchat-app-kit");
+
+  var _HLineView = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[2], "../common/HLineView"));
+
+  var _utils = _$$_REQUIRE(_dependencyMap[3], "../utils");
+
+  var _jsxFileName = "/Users/chattle/Documents/wchat-git/wchat-app-demo/src/views/DemoListItem.js";
+  var View = _wchatAppKit.EUIKit.View,
+      Text = _wchatAppKit.EUIKit.Text;
+
+  function DemoListItemView(props) {
+    var data = props.data;
+    return _wchatAppKit.React.createElement(View, {
+      activeOpacity: 0.7,
+      style: {
+        width: _utils.Screen.width,
+        height: 70,
+        backgroundColor: _utils.Colors.white
+      },
+      onPress: function onPress() {},
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 12
+      }
+    }, _wchatAppKit.React.createElement(View, {
+      style: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 12
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 13
+      }
+    }, _wchatAppKit.React.createElement(Text, {
+      style: {
+        color: _utils.Colors.title,
+        fontSize: 16
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 14
+      }
+    }, data.title)), _wchatAppKit.React.createElement(_HLineView.default, {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 16
+      }
+    }));
+  }
+},"src_views_DemoListItem",["node_modules_@babel_runtime_helpers_interopRequireDefault","node_modules_wchat-app-kit_index","src_common_HLineView","src_utils_index"],"src/views/DemoListItem.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = BottomTab;
+
+  var _wchatAppKit = _$$_REQUIRE(_dependencyMap[1], "wchat-app-kit");
+
+  var _Tab = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[2], "./Tab1"));
+
+  var _Tab2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[3], "./Tab2"));
+
+  var _Tab3 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[4], "./Tab3"));
+
+  var _utils = _$$_REQUIRE(_dependencyMap[5], "../utils");
+
+  var _jsxFileName = "/Users/chattle/Documents/wchat-git/wchat-app-demo/src/views/BottomTab.js";
+  var View = _wchatAppKit.EUIKit.View,
+      Image = _wchatAppKit.EUIKit.Image;
+
+  var Nav = _wchatAppKit.Navigation.createAppContainer(_wchatAppKit.Navigation.createBottomTabNavigator({
+    tab1: {
+      screen: _Tab.default,
+      navigationOptions: function navigationOptions() {
+        return {
+          header: null,
+          title: "tab1",
+          tabBarIcon: function tabBarIcon(_ref) {
+            var focused = _ref.focused;
+            return _wchatAppKit.React.createElement(Image, {
+              resizeMode: "contain",
+              style: {
+                width: 20,
+                height: 20
+              },
+              tintColor: focused ? _utils.Colors.main : _utils.Colors.gray,
+              source: focused ? _utils.Images.tab_1_h : _utils.Images.tab_1,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 17
+              }
+            });
+          }
+        };
+      }
+    },
+    tab2: {
+      screen: _Tab2.default,
+      navigationOptions: function navigationOptions() {
+        return {
+          title: "tab2",
+          header: null,
+          tabBarIcon: function tabBarIcon(_ref2) {
+            var focused = _ref2.focused;
+            return _wchatAppKit.React.createElement(Image, {
+              resizeMode: "contain",
+              style: {
+                width: 20,
+                height: 20
+              },
+              tintColor: focused ? _utils.Colors.main : _utils.Colors.gray,
+              source: focused ? _utils.Images.tab_2_h : _utils.Images.tab_2,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 27
+              }
+            });
+          }
+        };
+      }
+    },
+    tab3: {
+      screen: _Tab3.default,
+      navigationOptions: function navigationOptions() {
+        return {
+          title: "tab3",
+          header: null,
+          tabBarIcon: function tabBarIcon(_ref3) {
+            var focused = _ref3.focused;
+            return _wchatAppKit.React.createElement(Image, {
+              resizeMode: "contain",
+              style: {
+                width: 20,
+                height: 20
+              },
+              tintColor: focused ? _utils.Colors.main : _utils.Colors.gray,
+              source: focused ? _utils.Images.tab_3_h : _utils.Images.tab_3,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 37
+              }
+            });
+          }
+        };
+      }
+    }
+  }, {
+    initialRouteName: 'tab1',
+    tabBarPosition: 'bottom',
+    lazy: true,
+    backBehavior: 'none',
+    tabBarOptions: {
+      activeTintColor: _utils.Colors.main,
+      inactiveTintColor: _utils.Colors.gray,
+      showIcon: true,
+      showLabel: true,
+      style: {
+        backgroundColor: _utils.Colors.white,
+        paddingBottom: 3,
+        borderTopWidth: 0.2,
+        paddingTop: 1,
+        borderTopColor: _utils.Colors.gray
+      },
+      labelStyle: {
+        fontSize: 10,
+        margin: 0
+      }
+    }
+  }));
+
+  function BottomTab(props) {
+    return _wchatAppKit.React.createElement(View, {
+      style: {
+        flex: 1
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 78
+      }
+    }, _wchatAppKit.React.createElement(Nav, {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 79
+      }
+    }));
+  }
+},"src_views_BottomTab",["node_modules_@babel_runtime_helpers_interopRequireDefault","node_modules_wchat-app-kit_index","src_views_Tab1","src_views_Tab2","src_views_Tab3","src_utils_index"],"src/views/BottomTab.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = Tab1View;
+
+  var _wchatAppKit = _$$_REQUIRE(_dependencyMap[1], "wchat-app-kit");
+
+  var _TitleView = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[2], "../common/TitleView"));
+
+  var _ListView = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[3], "../common/ListView"));
+
+  var _UserModel = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[4], "../models/UserModel"));
+
+  var _DemoListItem = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[5], "./DemoListItem"));
+
+  var _utils = _$$_REQUIRE(_dependencyMap[6], "../utils");
+
+  var _reactNative = _$$_REQUIRE(_dependencyMap[7], "react-native");
+
+  var _jsxFileName = "/Users/chattle/Documents/wchat-git/wchat-app-demo/src/views/Tab1.js";
+  var View = _wchatAppKit.EUIKit.View;
+
+  function Tab1View(props) {
+    return _wchatAppKit.React.createElement(View, {
+      style: styles.container,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 16
+      }
+    }, _wchatAppKit.React.createElement(_reactNative.Text, {
+      style: {
+        fontSize: 18,
+        fontWeight: 'bold'
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 17
+      }
+    }, "Tab1"));
+  }
+
+  var styles = {
+    container: {
+      flex: 1,
+      backgroundColor: "#2196f3",
+      justifyContent: 'center',
+      alignItems: 'center'
+    }
+  };
+},"src_views_Tab1",["node_modules_@babel_runtime_helpers_interopRequireDefault","node_modules_wchat-app-kit_index","src_common_TitleView","src_common_ListView","src_models_UserModel","src_views_DemoListItem","src_utils_index","react-native-implementation"],"src/views/Tab1.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = Tab1View;
+
+  var _wchatAppKit = _$$_REQUIRE(_dependencyMap[0], "wchat-app-kit");
+
+  var _reactNative = _$$_REQUIRE(_dependencyMap[1], "react-native");
+
+  var _jsxFileName = "/Users/chattle/Documents/wchat-git/wchat-app-demo/src/views/Tab2.js";
+  var View = _wchatAppKit.EUIKit.View;
+
+  function Tab1View(props) {
+    return _wchatAppKit.React.createElement(View, {
+      style: styles.container,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 8
+      }
+    }, _wchatAppKit.React.createElement(_reactNative.Text, {
+      style: {
+        fontSize: 18,
+        fontWeight: 'bold'
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 9
+      }
+    }, "Tab2"));
+  }
+
+  var styles = {
+    container: {
+      flex: 1,
+      backgroundColor: "#ff5722",
+      justifyContent: 'center',
+      alignItems: 'center'
+    }
+  };
+},"src_views_Tab2",["node_modules_wchat-app-kit_index","react-native-implementation"],"src/views/Tab2.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = Tab1View;
+
+  var _wchatAppKit = _$$_REQUIRE(_dependencyMap[1], "wchat-app-kit");
+
+  var _TitleView = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[2], "../common/TitleView"));
+
+  var _ListView = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[3], "../common/ListView"));
+
+  var _UserModel = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[4], "../models/UserModel"));
+
+  var _DemoListItem = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[5], "./DemoListItem"));
+
+  var _utils = _$$_REQUIRE(_dependencyMap[6], "../utils");
+
+  var _reactNative = _$$_REQUIRE(_dependencyMap[7], "react-native");
+
+  var _jsxFileName = "/Users/chattle/Documents/wchat-git/wchat-app-demo/src/views/Tab3.js";
+  var View = _wchatAppKit.EUIKit.View;
+
+  function Tab1View(props) {
+    return _wchatAppKit.React.createElement(View, {
+      style: styles.container,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 16
+      }
+    }, _wchatAppKit.React.createElement(_reactNative.Text, {
+      style: {
+        fontSize: 18,
+        fontWeight: 'bold'
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 17
+      }
+    }, "Tab3"));
+  }
+
+  var styles = {
+    container: {
+      flex: 1,
+      backgroundColor: "#ffc400",
+      justifyContent: 'center',
+      alignItems: 'center'
+    }
+  };
+},"src_views_Tab3",["node_modules_@babel_runtime_helpers_interopRequireDefault","node_modules_wchat-app-kit_index","src_common_TitleView","src_common_ListView","src_models_UserModel","src_views_DemoListItem","src_utils_index","react-native-implementation"],"src/views/Tab3.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = Tab;
+
+  var _wchatAppKit = _$$_REQUIRE(_dependencyMap[1], "wchat-app-kit");
+
+  var _TitleView = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[2], "../common/TitleView"));
+
+  var _TabView = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[3], "./TabView"));
+
+  var _utils = _$$_REQUIRE(_dependencyMap[4], "../utils");
+
+  var _jsxFileName = "/Users/chattle/Documents/wchat-git/wchat-app-demo/src/views/Tab.js";
+  var View = _wchatAppKit.EUIKit.View;
+
+  function Tab(props) {
+    return _wchatAppKit.React.createElement(View, {
+      style: styles.container,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 13
+      }
+    }, _wchatAppKit.React.createElement(_TitleView.default, {
+      title: 'Tab',
+      showback: true,
+      showline: true,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 14
+      }
+    }), _wchatAppKit.React.createElement(_TabView.default, {
+      status: 0,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 15
+      }
+    }));
+  }
+
+  var styles = {
+    container: {
+      flex: 1
+    }
+  };
+},"src_views_Tab",["node_modules_@babel_runtime_helpers_interopRequireDefault","node_modules_wchat-app-kit_index","src_common_TitleView","src_views_TabView","src_utils_index"],"src/views/Tab.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = TabView;
+
+  var _wchatAppKit = _$$_REQUIRE(_dependencyMap[1], "wchat-app-kit");
+
+  var _utils = _$$_REQUIRE(_dependencyMap[2], "../utils");
+
+  var _TabItem = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[3], "./TabItem"));
+
+  var _jsxFileName = "/Users/chattle/Documents/wchat-git/wchat-app-demo/src/views/TabView.js";
+  var View = _wchatAppKit.EUIKit.View;
+  var ActivityIndicator = _wchatAppKit.RNKit.ActivityIndicator;
+
+  function TabView(props) {
+    var menus = [{
+      title: 'tab1',
+      status: 0
+    }, {
+      title: 'tab2',
+      status: 1
+    }, {
+      title: 'tab3',
+      status: 1
+    }];
+    var status = props.status;
+
+    if (menus && menus.length > 0) {
+      return _wchatAppKit.React.createElement(View, {
+        style: styles.tabview,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 20
+        }
+      }, _wchatAppKit.React.createElement(_wchatAppKit.ScrollableTabView, {
+        initialPage: status,
+        tabBarActiveTextColor: _utils.Colors.main,
+        tabBarUnderlineStyle: styles.tabBarUnderline,
+        tabBarInactiveTextColor: _utils.Colors.title,
+        tabBarTextStyle: {
+          fontSize: 14
+        },
+        prerenderingSiblingsNumber: 0,
+        renderTabBar: function renderTabBar() {
+          return _wchatAppKit.React.createElement(_wchatAppKit.ScrollableTabView.ScrollableTabBar, {
+            style: {
+              borderBottomWidth: 0,
+              borderBottomColor: _utils.Colors.line
+            },
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 28
+            }
+          });
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 21
+        }
+      }, menus.map(function (item, i) {
+        return _wchatAppKit.React.createElement(_TabItem.default, {
+          index: i,
+          tabLabel: item.title,
+          key: item.status,
+          data: item,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 31
+          }
+        });
+      })));
+    } else {
+      return _wchatAppKit.React.createElement(View, {
+        style: styles.loading,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 39
+        }
+      }, _wchatAppKit.React.createElement(ActivityIndicator, {
+        color: _utils.Colors.main,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 40
+        }
+      }));
+    }
+  }
+
+  var styles = _wchatAppKit.RNKit.StyleSheet.create({
+    tabview: {
+      flex: 1
+    },
+    tabBarUnderline: {
+      backgroundColor: _utils.Colors.main,
+      height: 2,
+      width: 30
+    },
+    loading: {
+      flex: 1,
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center'
+    }
+  });
+},"src_views_TabView",["node_modules_@babel_runtime_helpers_interopRequireDefault","node_modules_wchat-app-kit_index","src_utils_index","src_views_TabItem"],"src/views/TabView.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = TabItemView;
+
+  var _wchatAppKit = _$$_REQUIRE(_dependencyMap[0], "wchat-app-kit");
+
+  var _jsxFileName = "/Users/chattle/Documents/wchat-git/wchat-app-demo/src/views/TabItem.js";
+  var View = _wchatAppKit.EUIKit.View,
+      Text = _wchatAppKit.EUIKit.Text;
+
+  function TabItemView(props) {
+    return _wchatAppKit.React.createElement(View, {
+      style: styles.container,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 9
+      }
+    }, _wchatAppKit.React.createElement(Text, {
+      style: {
+        fontSize: 18,
+        fontWeight: 'bold'
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 10
+      }
+    }, props.tabLabel));
+  }
+
+  var styles = {
+    container: {
+      flex: 1,
+      backgroundColor: "#f44336",
+      justifyContent: 'center',
+      alignItems: 'center'
+    }
+  };
+},"src_views_TabItem",["node_modules_wchat-app-kit_index"],"src/views/TabItem.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+
+  var _regenerator = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[1], "@babel/runtime/regenerator"));
+
+  var _wchatAppKit = _$$_REQUIRE(_dependencyMap[2], "wchat-app-kit");
+
+  var store_key_logininfo = "login_info";
+  var store_key_indextabs = "tabs_index";
+  var store_key_his_search = "his_search_";
+  var store_key_love_gid = "love_gid_";
+  var shop_first_show = "show_tip_";
+  var _default = {
+    getLoginUser: function getLoginUser() {
+      return _regenerator.default.async(function getLoginUser$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return _regenerator.default.awrap(_wchatAppKit.Storage.get(store_key_logininfo));
+
+            case 2:
+              return _context.abrupt("return", _context.sent);
+
+            case 3:
+            case "end":
+              return _context.stop();
+          }
+        }
+      });
+    },
+    saveLoginUser: function saveLoginUser(user) {
+      return _regenerator.default.async(function saveLoginUser$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return _regenerator.default.awrap(_wchatAppKit.Storage.save(store_key_logininfo, JSON.stringify(user)));
+
+            case 2:
+              return _context2.abrupt("return", _context2.sent);
+
+            case 3:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      });
+    },
+    getIndexTabs: function getIndexTabs() {
+      return _regenerator.default.async(function getIndexTabs$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.next = 2;
+              return _regenerator.default.awrap(_wchatAppKit.Storage.get(store_key_indextabs));
+
+            case 2:
+              return _context3.abrupt("return", _context3.sent);
+
+            case 3:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      });
+    },
+    saveIndexTabs: function saveIndexTabs(tabs) {
+      return _regenerator.default.async(function saveIndexTabs$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              _context4.next = 2;
+              return _regenerator.default.awrap(_wchatAppKit.Storage.save(store_key_indextabs, JSON.stringify(tabs)));
+
+            case 2:
+              return _context4.abrupt("return", _context4.sent);
+
+            case 3:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      });
+    },
+    getHisSearchByUser: function getHisSearchByUser(uid) {
+      return _regenerator.default.async(function getHisSearchByUser$(_context5) {
+        while (1) {
+          switch (_context5.prev = _context5.next) {
+            case 0:
+              _context5.next = 2;
+              return _regenerator.default.awrap(_wchatAppKit.Storage.get(store_key_his_search + uid));
+
+            case 2:
+              return _context5.abrupt("return", _context5.sent);
+
+            case 3:
+            case "end":
+              return _context5.stop();
+          }
+        }
+      });
+    },
+    saveHisSearchByUser: function saveHisSearchByUser(uid, searchContent) {
+      return _regenerator.default.async(function saveHisSearchByUser$(_context6) {
+        while (1) {
+          switch (_context6.prev = _context6.next) {
+            case 0:
+              _context6.next = 2;
+              return _regenerator.default.awrap(_wchatAppKit.Storage.save(store_key_his_search + uid, searchContent));
+
+            case 2:
+              return _context6.abrupt("return", _context6.sent);
+
+            case 3:
+            case "end":
+              return _context6.stop();
+          }
+        }
+      });
+    },
+    saveLoveGoods: function saveLoveGoods(uid, goodsList) {
+      return _regenerator.default.async(function saveLoveGoods$(_context7) {
+        while (1) {
+          switch (_context7.prev = _context7.next) {
+            case 0:
+              _context7.next = 2;
+              return _regenerator.default.awrap(_wchatAppKit.Storage.save(store_key_love_gid + uid, JSON.stringify(goodsList)));
+
+            case 2:
+              return _context7.abrupt("return", _context7.sent);
+
+            case 3:
+            case "end":
+              return _context7.stop();
+          }
+        }
+      });
+    },
+    getLoveGoods: function getLoveGoods(uid) {
+      return _regenerator.default.async(function getLoveGoods$(_context8) {
+        while (1) {
+          switch (_context8.prev = _context8.next) {
+            case 0:
+              _context8.next = 2;
+              return _regenerator.default.awrap(_wchatAppKit.Storage.get(store_key_love_gid + uid));
+
+            case 2:
+              return _context8.abrupt("return", _context8.sent);
+
+            case 3:
+            case "end":
+              return _context8.stop();
+          }
+        }
+      });
+    }
+  };
+  exports.default = _default;
+},"src_utils_StoreUtils",["node_modules_@babel_runtime_helpers_interopRequireDefault","node_modules_@babel_runtime_regenerator_index","node_modules_wchat-app-kit_index"],"src/utils/StoreUtils.js");
+__r("InitializeCore");
+__r("src_App");

@@ -1,5 +1,5 @@
-import {EUIKit, React, RNKit, WChat} from 'wchat-app-kit';
-import {Colors,Screen} from '../utils';
+import {EUIKit, React, RNKit, WChat,LinearGradient} from 'wchat-app-kit';
+import {Colors,Screen,Language} from '../utils';
 import TitleView from '../common/TitleView';
 import {TouchableOpacity} from 'react-native';
 import NavUtils from 'wchat-app-kit/src/NavUtils';
@@ -7,6 +7,8 @@ const {View} = EUIKit;
 const {ScrollView,Text} = RNKit;
 
 export default function HomeView(props) {
+
+    const [lan,setLan] = React.useState(["en"]);
 
     let showToast=()=>{
       WChat.showToast("showToast");
@@ -31,13 +33,15 @@ export default function HomeView(props) {
     }
 
     let navationHeight=()=>{
-      let result = WChat.getNavgationHeight();
-      alert(JSON.stringify(result));
+      WChat.getNavgationHeight().then(result=>{
+        alert(JSON.stringify(result));
+      });
     }
 
     let getOs=()=>{
-      let os = WChat.getOs();
-      alert(os);
+      let os = WChat.getOs().then(result=>{
+        alert(JSON.stringify(result));
+      });
     }
 
     let statusBarHeight=()=>{
@@ -181,9 +185,19 @@ export default function HomeView(props) {
   }
 
 
+  let changeLan = () =>{
+    if(Language.strings.getLanguage()=="en"){
+      Language.strings.setLanguage('cn');
+      setLan("cn");
+    }else{
+      Language.strings.setLanguage('en');
+      setLan("en");
+    }
+  }
 
-
-
+  let log = () =>{
+    WChat.log("tag","messge");
+  }
 
 
 
@@ -194,9 +208,14 @@ export default function HomeView(props) {
           <View style={{flex:1,justifyContent:'center'}}>
             <Text style={{fontSize: 14, color: Colors.title,fontWeight:'bold'}} numberOfLines={1}> WChat kit 功能 </Text>
             <View style={{flex:1,flexWrap:'wrap',flexDirection:'row'}}>
+
+           
               <TouchableOpacity activeOpacity={0.95} onPress={()=>showToast()} style={[styles.touchViewBg,{width:90,marginTop:12}]}>
                 <Text style={[styles.touchTxt,]}> showToast </Text>
               </TouchableOpacity>
+        
+
+              
               <TouchableOpacity activeOpacity={0.95} onPress={()=>showLoading()} style={[styles.touchViewBg,{width:100,marginTop:12}]}>
                 <Text style={[styles.touchTxt,]}> showLoading </Text>
               </TouchableOpacity>
@@ -272,6 +291,10 @@ export default function HomeView(props) {
                 <Text style={[styles.touchTxt,]}> upload </Text>
               </TouchableOpacity>
 
+              <TouchableOpacity activeOpacity={0.95} onPress={()=> log()} style={[styles.touchViewBg,{width:130,marginTop:12}]}>
+                <Text style={[styles.touchTxt,]}> log </Text>
+              </TouchableOpacity>
+
             </View>
 
             <Text style={{fontSize: 14, color: Colors.title,fontWeight:'bold',marginTop:24}} numberOfLines={1}> 其它功能 </Text>
@@ -288,9 +311,16 @@ export default function HomeView(props) {
                 <Text style={[styles.touchTxt,]}> navigation </Text>
               </TouchableOpacity>
               <TouchableOpacity activeOpacity={0.95} onPress={()=>tab()} style={[styles.touchViewBg,{width:90,marginTop:12}]}>
-                <Text style={[styles.touchTxt,]}> tab </Text>
+                <Text style={[styles.touchTxt,]}> {Language.strings.tab} </Text>
               </TouchableOpacity>
 
+              <TouchableOpacity activeOpacity={0.95} onPress={()=>changeLan()} style={[styles.touchViewBg,{width:90,marginTop:12}]}>
+                <Text style={[styles.touchTxt,]}> {Language.strings.lan} </Text>
+              </TouchableOpacity>
+
+              <LinearGradient start={{x: 0.25, y: 0.25}} end={{x: 0.75, y: 0.75}}
+                    colors={['red', 'green', 'black']} style={{width:90,height:36,marginTop:10}}>
+              </LinearGradient>
 
             </View>
             <Text style={{fontSize: 14, color: Colors.title,fontWeight:'bold',marginBottom:24}} numberOfLines={1}> 其它功能参考官方或react-native-elements </Text>

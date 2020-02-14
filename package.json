@@ -16,10 +16,12 @@
     "react-native-fit-image": "^1.5.4",
     "react-native-image-pan-zoom": "^2.1.11",
     "react-native-image-zoom-viewer": "^2.2.27",
+    "react-native-screens": "^2.0.0-beta.2",
     "react-native-selfadapt-modal": "^1.1.0",
     "react-native-snap-carousel": "^3.8.3",
     "react-native-textarea": "^1.0.3",
-    "wchat-app-kit": "https://github.com/wchatim/wchat-app-kit"
+    "typescript": "^3.7.5",
+    "wchat-app-kit": "git+https://github.com/wchatim/wchat-app-kit.git"
   },
   "devDependencies": {
     "@babel/core": "^7.6.3",
