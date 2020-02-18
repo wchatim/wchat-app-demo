@@ -30,6 +30,7 @@ __d(function(global, require, _aUnused, _bUnused, module, exports, _cUnused) {
     "react-native-image-zoom-viewer": "^2.2.27",
     "react-native-screens": "^2.0.0-beta.2",
     "react-native-selfadapt-modal": "^1.1.0",
+    "react-native-shadow": "^1.2.2",
     "react-native-snap-carousel": "^3.8.3",
     "react-native-textarea": "^1.0.3",
     "typescript": "^3.7.5",
@@ -2171,6 +2172,8 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
 
   var _NavUtils = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[6], "wchat-app-kit/src/NavUtils"));
 
+  var _reactNativeShadow = _$$_REQUIRE(_dependencyMap[7], "react-native-shadow");
+
   var _jsxFileName = "/Users/chattle/Documents/wchat-git/wchat-app-demo/src/views/Home.js";
   var View = _wchatAppKit.EUIKit.View;
   var ScrollView = _wchatAppKit.RNKit.ScrollView,
@@ -2359,7 +2362,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       style: styles.container,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 205
+        lineNumber: 207
       }
     }, _wchatAppKit.React.createElement(_TitleView.default, {
       title: 'Demo',
@@ -2367,14 +2370,14 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       showback: false,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 206
+        lineNumber: 208
       }
     }), _wchatAppKit.React.createElement(ScrollView, {
       style: styles.scrollView,
       showsVerticalScrollIndicator: false,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 207
+        lineNumber: 209
       }
     }, _wchatAppKit.React.createElement(View, {
       style: {
@@ -2383,7 +2386,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 208
+        lineNumber: 210
       }
     }, _wchatAppKit.React.createElement(Text, {
       style: {
@@ -2394,7 +2397,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       numberOfLines: 1,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 209
+        lineNumber: 211
       }
     }, " WChat kit \u529F\u80FD "), _wchatAppKit.React.createElement(View, {
       style: {
@@ -2404,7 +2407,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 210
+        lineNumber: 212
       }
     }, _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
       activeOpacity: 0.95,
@@ -2417,13 +2420,13 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       }],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 213
+        lineNumber: 215
       }
     }, _wchatAppKit.React.createElement(Text, {
       style: [styles.touchTxt],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 214
+        lineNumber: 216
       }
     }, " showToast ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
       activeOpacity: 0.95,
@@ -2436,13 +2439,13 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       }],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 219
+        lineNumber: 221
       }
     }, _wchatAppKit.React.createElement(Text, {
       style: [styles.touchTxt],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 220
+        lineNumber: 222
       }
     }, " showLoading ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
       activeOpacity: 0.95,
@@ -2455,13 +2458,13 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       }],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 222
+        lineNumber: 224
       }
     }, _wchatAppKit.React.createElement(Text, {
       style: [styles.touchTxt],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 223
+        lineNumber: 225
       }
     }, " showAlert1 ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
       activeOpacity: 0.95,
@@ -2474,13 +2477,13 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       }],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 225
+        lineNumber: 227
       }
     }, _wchatAppKit.React.createElement(Text, {
       style: [styles.touchTxt],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 226
+        lineNumber: 228
       }
     }, " showAlert2 ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
       activeOpacity: 0.95,
@@ -2493,13 +2496,13 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       }],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 228
+        lineNumber: 230
       }
     }, _wchatAppKit.React.createElement(Text, {
       style: [styles.touchTxt],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 229
+        lineNumber: 231
       }
     }, " navationHeight ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
       activeOpacity: 0.95,
@@ -2512,13 +2515,13 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       }],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 232
+        lineNumber: 234
       }
     }, _wchatAppKit.React.createElement(Text, {
       style: [styles.touchTxt],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 233
+        lineNumber: 235
       }
     }, " os ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
       activeOpacity: 0.95,
@@ -2531,13 +2534,13 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       }],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 235
+        lineNumber: 237
       }
     }, _wchatAppKit.React.createElement(Text, {
       style: [styles.touchTxt],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 236
+        lineNumber: 238
       }
     }, " statusBarHeight ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
       activeOpacity: 0.95,
@@ -2550,13 +2553,13 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       }],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 238
+        lineNumber: 240
       }
     }, _wchatAppKit.React.createElement(Text, {
       style: [styles.touchTxt],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 239
+        lineNumber: 241
       }
     }, " login ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
       activeOpacity: 0.95,
@@ -2569,13 +2572,13 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       }],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 242
+        lineNumber: 244
       }
     }, _wchatAppKit.React.createElement(Text, {
       style: [styles.touchTxt],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 243
+        lineNumber: 245
       }
     }, " reqLocal ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
       activeOpacity: 0.95,
@@ -2588,13 +2591,13 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       }],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 246
+        lineNumber: 248
       }
     }, _wchatAppKit.React.createElement(Text, {
       style: [styles.touchTxt],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 247
+        lineNumber: 249
       }
     }, " reqPhoto ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
       activeOpacity: 0.95,
@@ -2607,13 +2610,13 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       }],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 250
+        lineNumber: 252
       }
     }, _wchatAppKit.React.createElement(Text, {
       style: [styles.touchTxt],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 251
+        lineNumber: 253
       }
     }, " reqChain ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
       activeOpacity: 0.95,
@@ -2626,13 +2629,13 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       }],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 254
+        lineNumber: 256
       }
     }, _wchatAppKit.React.createElement(Text, {
       style: [styles.touchTxt],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 255
+        lineNumber: 257
       }
     }, " reqWallet ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
       activeOpacity: 0.95,
@@ -2645,13 +2648,13 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       }],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 258
+        lineNumber: 260
       }
     }, _wchatAppKit.React.createElement(Text, {
       style: [styles.touchTxt],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 259
+        lineNumber: 261
       }
     }, " chat ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
       activeOpacity: 0.95,
@@ -2664,13 +2667,13 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       }],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 262
+        lineNumber: 264
       }
     }, _wchatAppKit.React.createElement(Text, {
       style: [styles.touchTxt],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 263
+        lineNumber: 265
       }
     }, " share ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
       activeOpacity: 0.95,
@@ -2683,13 +2686,13 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       }],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 266
+        lineNumber: 268
       }
     }, _wchatAppKit.React.createElement(Text, {
       style: [styles.touchTxt],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 267
+        lineNumber: 269
       }
     }, " shareImg ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
       activeOpacity: 0.95,
@@ -2702,13 +2705,13 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       }],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 270
+        lineNumber: 272
       }
     }, _wchatAppKit.React.createElement(Text, {
       style: [styles.touchTxt],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 271
+        lineNumber: 273
       }
     }, " requestBindCode ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
       activeOpacity: 0.95,
@@ -2721,13 +2724,13 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       }],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 274
+        lineNumber: 276
       }
     }, _wchatAppKit.React.createElement(Text, {
       style: [styles.touchTxt],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 275
+        lineNumber: 277
       }
     }, " requestIntenetParams ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
       activeOpacity: 0.95,
@@ -2740,13 +2743,13 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       }],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 278
+        lineNumber: 280
       }
     }, _wchatAppKit.React.createElement(Text, {
       style: [styles.touchTxt],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 279
+        lineNumber: 281
       }
     }, " requestCharge ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
       activeOpacity: 0.95,
@@ -2759,13 +2762,13 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       }],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 282
+        lineNumber: 284
       }
     }, _wchatAppKit.React.createElement(Text, {
       style: [styles.touchTxt],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 283
+        lineNumber: 285
       }
     }, " requestBalance ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
       activeOpacity: 0.95,
@@ -2778,13 +2781,13 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       }],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 286
+        lineNumber: 288
       }
     }, _wchatAppKit.React.createElement(Text, {
       style: [styles.touchTxt],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 287
+        lineNumber: 289
       }
     }, " requestPayment ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
       activeOpacity: 0.95,
@@ -2797,13 +2800,13 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       }],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 290
+        lineNumber: 292
       }
     }, _wchatAppKit.React.createElement(Text, {
       style: [styles.touchTxt],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 291
+        lineNumber: 293
       }
     }, " upload ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
       activeOpacity: 0.95,
@@ -2816,13 +2819,13 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       }],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 294
+        lineNumber: 296
       }
     }, _wchatAppKit.React.createElement(Text, {
       style: [styles.touchTxt],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 295
+        lineNumber: 297
       }
     }, " log "))), _wchatAppKit.React.createElement(Text, {
       style: {
@@ -2834,7 +2837,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       numberOfLines: 1,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 300
+        lineNumber: 302
       }
     }, " \u5176\u5B83\u529F\u80FD "), _wchatAppKit.React.createElement(View, {
       style: {
@@ -2846,7 +2849,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 301
+        lineNumber: 303
       }
     }, _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
       activeOpacity: 0.95,
@@ -2859,13 +2862,13 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       }],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 302
+        lineNumber: 304
       }
     }, _wchatAppKit.React.createElement(Text, {
       style: [styles.touchTxt],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 303
+        lineNumber: 305
       }
     }, " \u7F51\u7EDC\u8BF7\u6C42 ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
       activeOpacity: 0.95,
@@ -2878,13 +2881,13 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       }],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 306
+        lineNumber: 308
       }
     }, _wchatAppKit.React.createElement(Text, {
       style: [styles.touchTxt],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 307
+        lineNumber: 309
       }
     }, " \u5217\u8868 ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
       activeOpacity: 0.95,
@@ -2897,13 +2900,13 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       }],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 310
+        lineNumber: 312
       }
     }, _wchatAppKit.React.createElement(Text, {
       style: [styles.touchTxt],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 311
+        lineNumber: 313
       }
     }, " navigation ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
       activeOpacity: 0.95,
@@ -2916,13 +2919,13 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       }],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 313
+        lineNumber: 315
       }
     }, _wchatAppKit.React.createElement(Text, {
       style: [styles.touchTxt],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 314
+        lineNumber: 316
       }
     }, " ", _utils.Language.strings.tab, " ")), _wchatAppKit.React.createElement(_reactNative.TouchableOpacity, {
       activeOpacity: 0.95,
@@ -2935,34 +2938,33 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       }],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 317
+        lineNumber: 319
       }
     }, _wchatAppKit.React.createElement(Text, {
       style: [styles.touchTxt],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 318
+        lineNumber: 320
       }
-    }, " ", _utils.Language.strings.lan, " ")), _wchatAppKit.React.createElement(_wchatAppKit.LinearGradient, {
-      start: {
-        x: 0.25,
-        y: 0.25
-      },
-      end: {
-        x: 0.75,
-        y: 0.75
-      },
-      colors: ['red', 'green', 'black'],
-      style: {
-        width: 90,
-        height: 36,
-        marginTop: 10
+    }, " ", _utils.Language.strings.lan, " "))), _wchatAppKit.React.createElement(_reactNativeShadow.BoxShadow, {
+      setting: {
+        width: 100,
+        height: 200,
+        color: "#000",
+        border: 10,
+        radius: 5,
+        opacity: 0.2,
+        x: 0,
+        y: 8,
+        style: {
+          marginVertical: 5
+        }
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 321
+        lineNumber: 326
       }
-    })), _wchatAppKit.React.createElement(Text, {
+    }), _wchatAppKit.React.createElement(Text, {
       style: {
         fontSize: 14,
         color: _utils.Colors.title,
@@ -2972,7 +2974,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       numberOfLines: 1,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 326
+        lineNumber: 338
       }
     }, " \u5176\u5B83\u529F\u80FD\u53C2\u8003\u5B98\u65B9\u6216react-native-elements "))));
   }
@@ -2999,7 +3001,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       color: _utils.Colors.white
     }
   };
-},"src_views_Home",["node_modules_@babel_runtime_helpers_interopRequireDefault","node_modules_@babel_runtime_helpers_slicedToArray","node_modules_wchat-app-kit_index","src_utils_index","src_common_TitleView","react-native-implementation","node_modules_wchat-app-kit_src_NavUtils"],"src/views/Home.js");
+},"src_views_Home",["node_modules_@babel_runtime_helpers_interopRequireDefault","node_modules_@babel_runtime_helpers_slicedToArray","node_modules_wchat-app-kit_index","src_utils_index","src_common_TitleView","react-native-implementation","node_modules_wchat-app-kit_src_NavUtils","node_modules_react-native-shadow_index"],"src/views/Home.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
 
@@ -3241,6 +3243,171 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   exports.default = _default;
 },"src_utils_Http",["node_modules_@babel_runtime_helpers_interopRequireDefault","node_modules_@babel_runtime_helpers_defineProperty","src_utils_Globle"],"src/utils/Http.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+
+  var _regenerator = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[1], "@babel/runtime/regenerator"));
+
+  var _wchatAppKit = _$$_REQUIRE(_dependencyMap[2], "wchat-app-kit");
+
+  var store_key_logininfo = "login_info";
+  var store_key_indextabs = "tabs_index";
+  var store_key_his_search = "his_search_";
+  var store_key_love_gid = "love_gid_";
+  var shop_first_show = "show_tip_";
+  var _default = {
+    getLoginUser: function getLoginUser() {
+      return _regenerator.default.async(function getLoginUser$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return _regenerator.default.awrap(_wchatAppKit.Storage.get(store_key_logininfo));
+
+            case 2:
+              return _context.abrupt("return", _context.sent);
+
+            case 3:
+            case "end":
+              return _context.stop();
+          }
+        }
+      });
+    },
+    saveLoginUser: function saveLoginUser(user) {
+      return _regenerator.default.async(function saveLoginUser$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return _regenerator.default.awrap(_wchatAppKit.Storage.save(store_key_logininfo, JSON.stringify(user)));
+
+            case 2:
+              return _context2.abrupt("return", _context2.sent);
+
+            case 3:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      });
+    },
+    getIndexTabs: function getIndexTabs() {
+      return _regenerator.default.async(function getIndexTabs$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.next = 2;
+              return _regenerator.default.awrap(_wchatAppKit.Storage.get(store_key_indextabs));
+
+            case 2:
+              return _context3.abrupt("return", _context3.sent);
+
+            case 3:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      });
+    },
+    saveIndexTabs: function saveIndexTabs(tabs) {
+      return _regenerator.default.async(function saveIndexTabs$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              _context4.next = 2;
+              return _regenerator.default.awrap(_wchatAppKit.Storage.save(store_key_indextabs, JSON.stringify(tabs)));
+
+            case 2:
+              return _context4.abrupt("return", _context4.sent);
+
+            case 3:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      });
+    },
+    getHisSearchByUser: function getHisSearchByUser(uid) {
+      return _regenerator.default.async(function getHisSearchByUser$(_context5) {
+        while (1) {
+          switch (_context5.prev = _context5.next) {
+            case 0:
+              _context5.next = 2;
+              return _regenerator.default.awrap(_wchatAppKit.Storage.get(store_key_his_search + uid));
+
+            case 2:
+              return _context5.abrupt("return", _context5.sent);
+
+            case 3:
+            case "end":
+              return _context5.stop();
+          }
+        }
+      });
+    },
+    saveHisSearchByUser: function saveHisSearchByUser(uid, searchContent) {
+      return _regenerator.default.async(function saveHisSearchByUser$(_context6) {
+        while (1) {
+          switch (_context6.prev = _context6.next) {
+            case 0:
+              _context6.next = 2;
+              return _regenerator.default.awrap(_wchatAppKit.Storage.save(store_key_his_search + uid, searchContent));
+
+            case 2:
+              return _context6.abrupt("return", _context6.sent);
+
+            case 3:
+            case "end":
+              return _context6.stop();
+          }
+        }
+      });
+    },
+    saveLoveGoods: function saveLoveGoods(uid, goodsList) {
+      return _regenerator.default.async(function saveLoveGoods$(_context7) {
+        while (1) {
+          switch (_context7.prev = _context7.next) {
+            case 0:
+              _context7.next = 2;
+              return _regenerator.default.awrap(_wchatAppKit.Storage.save(store_key_love_gid + uid, JSON.stringify(goodsList)));
+
+            case 2:
+              return _context7.abrupt("return", _context7.sent);
+
+            case 3:
+            case "end":
+              return _context7.stop();
+          }
+        }
+      });
+    },
+    getLoveGoods: function getLoveGoods(uid) {
+      return _regenerator.default.async(function getLoveGoods$(_context8) {
+        while (1) {
+          switch (_context8.prev = _context8.next) {
+            case 0:
+              _context8.next = 2;
+              return _regenerator.default.awrap(_wchatAppKit.Storage.get(store_key_love_gid + uid));
+
+            case 2:
+              return _context8.abrupt("return", _context8.sent);
+
+            case 3:
+            case "end":
+              return _context8.stop();
+          }
+        }
+      });
+    }
+  };
+  exports.default = _default;
+},"src_utils_StoreUtils",["node_modules_@babel_runtime_helpers_interopRequireDefault","node_modules_@babel_runtime_regenerator_index","node_modules_wchat-app-kit_index"],"src/utils/StoreUtils.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   var _interopRequireWildcard = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireWildcard");
 
   var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[1], "@babel/runtime/helpers/interopRequireDefault");
@@ -3271,9 +3438,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
 
   var _reactNativeSvg = _interopRequireWildcard(_$$_REQUIRE(_dependencyMap[14], "react-native-svg"));
 
-  var _reactNativeLinearGradient = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[15], "react-native-linear-gradient"));
-
-  var _reactNativeLocalization = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[16], "react-native-localization"));
+  var _reactNativeLocalization = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[15], "react-native-localization"));
 
   var ScrollableTabBar = _ScrollableTabView.default.ScrollableTabBar;
   var View = _reactNative.default.View,
@@ -3322,7 +3487,6 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
     React: _react.default,
     WChat: _WChat.default,
     Storage: _Storage.default,
-    LinearGradient: _reactNativeLinearGradient.default,
     LocalizedStrings: _reactNativeLocalization.default,
     ScrollableTabView: _ScrollableTabView.default,
     ScrollableTabBar: ScrollableTabBar,
@@ -3350,30 +3514,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       Mask: _reactNativeSvg.Mask
     }
   };
-},"node_modules_wchat-app-kit_index",["node_modules_@babel_runtime_helpers_interopRequireWildcard","node_modules_@babel_runtime_helpers_interopRequireDefault","node_modules_react_index","react-native-implementation","node_modules_react-native-gesture-handler_index","node_modules_react-navigation_src_react-navigation","node_modules_react-native-elements_src_index","node_modules_react-native-webview_index","node_modules_wchat-app-kit_src_WChat","node_modules_wchat-app-kit_src_Storage","node_modules_wchat-app-kit_src_NavUtils","node_modules_wchat-app-kit_src_ScrollableTabView_index","node_modules_react-native-view-shot_src_index","node_modules_react-native-qrcode-svg_index","node_modules_react-native-svg_src_index.ts","node_modules_react-native-linear-gradient_index.android","node_modules_react-native-localization_lib_LocalizedStrings"],"node_modules/wchat-app-kit/index.js");
-__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.default = void 0;
-
-  var _wchatAppKit = _$$_REQUIRE(_dependencyMap[0], "wchat-app-kit");
-
-  var strings = new _wchatAppKit.LocalizedStrings({
-    en: {
-      tab: "tab",
-      lan: "English"
-    },
-    cn: {
-      tab: "页签",
-      lan: "中文"
-    }
-  });
-  var _default = {
-    strings: strings
-  };
-  exports.default = _default;
-},"src_utils_Language",["node_modules_wchat-app-kit_index"],"src/utils/Language.js");
+},"node_modules_wchat-app-kit_index",["node_modules_@babel_runtime_helpers_interopRequireWildcard","node_modules_@babel_runtime_helpers_interopRequireDefault","node_modules_react_index","react-native-implementation","node_modules_react-native-gesture-handler_index","node_modules_react-navigation_src_react-navigation","node_modules_react-native-elements_src_index","node_modules_react-native-webview_index","node_modules_wchat-app-kit_src_WChat","node_modules_wchat-app-kit_src_Storage","node_modules_wchat-app-kit_src_NavUtils","node_modules_wchat-app-kit_src_ScrollableTabView_index","node_modules_react-native-view-shot_src_index","node_modules_react-native-qrcode-svg_index","node_modules_react-native-svg_src_index.ts","node_modules_react-native-localization_lib_LocalizedStrings"],"node_modules/wchat-app-kit/index.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
 
@@ -3511,6 +3652,585 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
     });
   }
 },"src_common_HLineView",["node_modules_wchat-app-kit_index","src_utils_index"],"src/common/HLineView.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, "BoxShadow", {
+    enumerable: true,
+    get: function get() {
+      return _BoxShadow.default;
+    }
+  });
+  Object.defineProperty(exports, "BorderShadow", {
+    enumerable: true,
+    get: function get() {
+      return _BorderShadow.default;
+    }
+  });
+
+  var _BoxShadow = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[1], "./lib/BoxShadow"));
+
+  var _BorderShadow = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[2], "./lib/BorderShadow"));
+},"node_modules_react-native-shadow_index",["node_modules_@babel_runtime_helpers_interopRequireDefault","node_modules_react-native-shadow_lib_BoxShadow","node_modules_react-native-shadow_lib_BorderShadow"],"node_modules/react-native-shadow/index.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
+
+  var _interopRequireWildcard = _$$_REQUIRE(_dependencyMap[1], "@babel/runtime/helpers/interopRequireWildcard");
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+
+  var _classCallCheck2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[2], "@babel/runtime/helpers/classCallCheck"));
+
+  var _possibleConstructorReturn2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[3], "@babel/runtime/helpers/possibleConstructorReturn"));
+
+  var _getPrototypeOf3 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[4], "@babel/runtime/helpers/getPrototypeOf"));
+
+  var _inherits2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[5], "@babel/runtime/helpers/inherits"));
+
+  var _react = _interopRequireWildcard(_$$_REQUIRE(_dependencyMap[6], "react"));
+
+  var _reactNative = _$$_REQUIRE(_dependencyMap[7], "react-native");
+
+  var _reactNativeSvg = _interopRequireWildcard(_$$_REQUIRE(_dependencyMap[8], "react-native-svg"));
+
+  var _jsxFileName = "/Users/chattle/Documents/wchat-git/wchat-app-demo/node_modules/react-native-shadow/lib/BoxShadow.js";
+
+  function colorRgb(color) {
+    var reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/;
+    var sColor = color.toLowerCase();
+    var rgb = [];
+
+    if (sColor && reg.test(sColor)) {
+      if (sColor.length === 4) {
+        var sColorNew = "#";
+
+        for (var i = 1; i < 4; i += 1) {
+          sColorNew += sColor.slice(i, i + 1).concat(sColor.slice(i, i + 1));
+        }
+
+        sColor = sColorNew;
+      }
+
+      for (var _i = 1; _i < 7; _i += 2) {
+        rgb.push(parseInt("0x" + sColor.slice(_i, _i + 2)));
+      }
+
+      return rgb;
+    } else {
+      throw Error("Invalid Color!");
+    }
+  }
+
+  var BoxShadow = function (_Component) {
+    (0, _inherits2.default)(BoxShadow, _Component);
+
+    function BoxShadow() {
+      var _getPrototypeOf2;
+
+      var _this;
+
+      (0, _classCallCheck2.default)(this, BoxShadow);
+
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+
+      _this = (0, _possibleConstructorReturn2.default)(this, (_getPrototypeOf2 = (0, _getPrototypeOf3.default)(BoxShadow)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+      _this.render = function () {
+        var _this$props = _this.props,
+            _this$props$setting = _this$props.setting,
+            _this$props$setting$w = _this$props$setting.width,
+            width = _this$props$setting$w === void 0 ? 0 : _this$props$setting$w,
+            _this$props$setting$h = _this$props$setting.height,
+            height = _this$props$setting$h === void 0 ? 0 : _this$props$setting$h,
+            _this$props$setting$c = _this$props$setting.color,
+            color = _this$props$setting$c === void 0 ? "#000" : _this$props$setting$c,
+            _this$props$setting$b = _this$props$setting.border,
+            border = _this$props$setting$b === void 0 ? 0 : _this$props$setting$b,
+            _this$props$setting$r = _this$props$setting.radius,
+            radius = _this$props$setting$r === void 0 ? 0 : _this$props$setting$r,
+            _this$props$setting$o = _this$props$setting.opacity,
+            opacity = _this$props$setting$o === void 0 ? 1 : _this$props$setting$o,
+            _this$props$setting$x = _this$props$setting.x,
+            x = _this$props$setting$x === void 0 ? 0 : _this$props$setting$x,
+            _this$props$setting$y = _this$props$setting.y,
+            y = _this$props$setting$y === void 0 ? 0 : _this$props$setting$y,
+            _this$props$setting$s = _this$props$setting.style,
+            style = _this$props$setting$s === void 0 ? {} : _this$props$setting$s,
+            children = _this$props.children;
+        var lineWidth = border,
+            rectWidth = width - radius * 2,
+            rectHeight = height - radius * 2;
+        var rgb = colorRgb(color);
+
+        var linear = function linear(key) {
+          return [_react.default.createElement(_reactNativeSvg.Stop, {
+            offset: "0",
+            stopColor: color,
+            stopOpacity: opacity,
+            key: key + 'Linear0',
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 44
+            }
+          }), _react.default.createElement(_reactNativeSvg.Stop, {
+            offset: "1",
+            stopColor: color,
+            stopOpacity: "0",
+            key: key + 'Linear1',
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 45
+            }
+          })];
+        };
+
+        var radial = function radial(key) {
+          return [_react.default.createElement(_reactNativeSvg.Stop, {
+            offset: "0",
+            stopColor: color,
+            stopOpacity: opacity,
+            key: key + 'Radial0',
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 50
+            }
+          }), _react.default.createElement(_reactNativeSvg.Stop, {
+            offset: (radius / (lineWidth + radius)).toString(),
+            stopColor: color,
+            stopOpacity: opacity,
+            key: key + 'Radial1',
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 51
+            }
+          }), _react.default.createElement(_reactNativeSvg.Stop, {
+            offset: "1",
+            stopColor: color,
+            stopOpacity: "0",
+            key: key + 'Radial2',
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 52
+            }
+          })];
+        };
+
+        var outerWidth = lineWidth + radius;
+        return _react.default.createElement(_reactNative.View, {
+          style: [{
+            position: "relative",
+            width: width,
+            height: height
+          }, style],
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 60
+          }
+        }, _react.default.createElement(_reactNativeSvg.default, {
+          height: height + lineWidth * 2 + radius * 2,
+          width: width + lineWidth * 2 + radius * 2,
+          style: {
+            position: "absolute",
+            top: y - lineWidth,
+            left: x - lineWidth
+          },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 61
+          }
+        }, _react.default.createElement(_reactNativeSvg.Defs, {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 62
+          }
+        }, _react.default.createElement(_reactNativeSvg.LinearGradient, {
+          id: "top",
+          x1: "0%",
+          x2: "0%",
+          y1: "100%",
+          y2: "0%",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 63
+          }
+        }, linear('BoxTop')), _react.default.createElement(_reactNativeSvg.LinearGradient, {
+          id: "bottom",
+          x1: "0%",
+          x2: "0%",
+          y1: "0%",
+          y2: "100%",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 64
+          }
+        }, linear('BoxBottom')), _react.default.createElement(_reactNativeSvg.LinearGradient, {
+          id: "left",
+          x1: "100%",
+          y1: "0%",
+          x2: "0%",
+          y2: "0%",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 65
+          }
+        }, linear('BoxLeft')), _react.default.createElement(_reactNativeSvg.LinearGradient, {
+          id: "right",
+          x1: "0%",
+          y1: "0%",
+          x2: "100%",
+          y2: "0%",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 66
+          }
+        }, linear('BoxRight')), _react.default.createElement(_reactNativeSvg.RadialGradient, {
+          id: "border-left-top",
+          r: "100%",
+          cx: "100%",
+          cy: "100%",
+          fx: "100%",
+          fy: "100%",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 68
+          }
+        }, radial('BoxLeftTop')), _react.default.createElement(_reactNativeSvg.RadialGradient, {
+          id: "border-left-bottom",
+          r: "100%",
+          cx: "100%",
+          cy: "0%",
+          fx: "100%",
+          fy: "0%",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 69
+          }
+        }, radial('BoxLeftBottom')), _react.default.createElement(_reactNativeSvg.RadialGradient, {
+          id: "border-right-top",
+          r: "100%",
+          cx: "0%",
+          cy: "100%",
+          fx: "0%",
+          fy: "100%",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 70
+          }
+        }, radial('BoxRightTop')), _react.default.createElement(_reactNativeSvg.RadialGradient, {
+          id: "border-right-bottom",
+          r: "100%",
+          cx: "0%",
+          cy: "0%",
+          fx: "0%",
+          fy: "0%",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 71
+          }
+        }, radial('BoxRightBottom'))), _react.default.createElement(_reactNativeSvg.Path, {
+          d: "M 0 " + outerWidth + ",Q 0 0 " + outerWidth + " 0,v " + lineWidth + ",q " + -radius + " 0 " + -radius + " " + radius + ",h " + -lineWidth + ",z",
+          fill: "url(#border-left-top)",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 74
+          }
+        }), _react.default.createElement(_reactNativeSvg.Path, {
+          d: "M " + (rectWidth + lineWidth + radius) + " 0,q " + outerWidth + " 0 " + outerWidth + " " + outerWidth + ",h " + -lineWidth + ",q 0 " + -radius + " " + -radius + " " + -radius + ",v " + -lineWidth + ",z",
+          fill: "url(#border-right-top)",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 75
+          }
+        }), _react.default.createElement(_reactNativeSvg.Path, {
+          d: "M " + (rectWidth + lineWidth + 2 * radius) + " " + (rectHeight + lineWidth + radius) + ",h " + lineWidth + ",q 0 " + outerWidth + " -" + outerWidth + " " + outerWidth + ",v " + -lineWidth + ",q " + radius + " 0 " + radius + " " + -radius + ",z",
+          fill: "url(#border-right-bottom)",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 76
+          }
+        }), _react.default.createElement(_reactNativeSvg.Path, {
+          d: "M 0 " + (rectHeight + lineWidth + radius) + ",q 0 " + outerWidth + " " + outerWidth + " " + outerWidth + ",v " + -lineWidth + ",q " + -radius + " 0 " + -radius + " " + -radius + ",h " + -lineWidth + ",z",
+          fill: "url(#border-left-bottom)",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 77
+          }
+        }), _react.default.createElement(_reactNativeSvg.Rect, {
+          x: outerWidth,
+          y: "0",
+          width: rectWidth,
+          height: lineWidth,
+          fill: "url(#top)",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 79
+          }
+        }), _react.default.createElement(_reactNativeSvg.Rect, {
+          x: "0",
+          y: outerWidth,
+          width: lineWidth,
+          height: rectHeight,
+          fill: "url(#left)",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 80
+          }
+        }), _react.default.createElement(_reactNativeSvg.Rect, {
+          x: rectWidth + lineWidth + 2 * radius,
+          y: outerWidth,
+          width: lineWidth,
+          height: rectHeight,
+          fill: "url(#right)",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 81
+          }
+        }), _react.default.createElement(_reactNativeSvg.Rect, {
+          x: outerWidth,
+          y: rectHeight + lineWidth + 2 * radius,
+          width: rectWidth,
+          height: lineWidth,
+          fill: "url(#bottom)",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 82
+          }
+        }), _react.default.createElement(_reactNativeSvg.Path, {
+          d: "M " + outerWidth + " " + lineWidth + ",h " + rectWidth + ",q " + radius + " 0 " + radius + " " + radius + ",v " + rectHeight + ",q 0 " + radius + " -" + radius + " " + radius + ",h -" + rectWidth + ",q -" + radius + " 0 -" + radius + " -" + radius + ",v -" + rectHeight + ",q 0 -" + radius + " " + radius + " -" + radius,
+          fill: "rgba(" + rgb[0] + "," + rgb[1] + "," + rgb[2] + "," + (opacity || 1) + ")",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 84
+          }
+        })), children);
+      };
+
+      return _this;
+    }
+
+    return BoxShadow;
+  }(_react.Component);
+
+  exports.default = BoxShadow;
+},"node_modules_react-native-shadow_lib_BoxShadow",["node_modules_@babel_runtime_helpers_interopRequireDefault","node_modules_@babel_runtime_helpers_interopRequireWildcard","node_modules_@babel_runtime_helpers_classCallCheck","node_modules_@babel_runtime_helpers_possibleConstructorReturn","node_modules_@babel_runtime_helpers_getPrototypeOf","node_modules_@babel_runtime_helpers_inherits","node_modules_react_index","react-native-implementation","node_modules_react-native-svg_src_index.ts"],"node_modules/react-native-shadow/lib/BoxShadow.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
+
+  var _interopRequireWildcard = _$$_REQUIRE(_dependencyMap[1], "@babel/runtime/helpers/interopRequireWildcard");
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+
+  var _toConsumableArray2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[2], "@babel/runtime/helpers/toConsumableArray"));
+
+  var _classCallCheck2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[3], "@babel/runtime/helpers/classCallCheck"));
+
+  var _possibleConstructorReturn2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[4], "@babel/runtime/helpers/possibleConstructorReturn"));
+
+  var _getPrototypeOf3 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[5], "@babel/runtime/helpers/getPrototypeOf"));
+
+  var _inherits2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[6], "@babel/runtime/helpers/inherits"));
+
+  var _react = _interopRequireWildcard(_$$_REQUIRE(_dependencyMap[7], "react"));
+
+  var _reactNative = _$$_REQUIRE(_dependencyMap[8], "react-native");
+
+  var _reactNativeSvg = _interopRequireWildcard(_$$_REQUIRE(_dependencyMap[9], "react-native-svg"));
+
+  var _jsxFileName = "/Users/chattle/Documents/wchat-git/wchat-app-demo/node_modules/react-native-shadow/lib/BorderShadow.js";
+
+  var BorderShadow = function (_Component) {
+    (0, _inherits2.default)(BorderShadow, _Component);
+
+    function BorderShadow() {
+      var _getPrototypeOf2;
+
+      var _this;
+
+      (0, _classCallCheck2.default)(this, BorderShadow);
+
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+
+      _this = (0, _possibleConstructorReturn2.default)(this, (_getPrototypeOf2 = (0, _getPrototypeOf3.default)(BorderShadow)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+      _this.render = function () {
+        var _this$props = _this.props,
+            _this$props$setting = _this$props.setting,
+            _this$props$setting$s = _this$props$setting.side,
+            side = _this$props$setting$s === void 0 ? "bottom" : _this$props$setting$s,
+            _this$props$setting$w = _this$props$setting.width,
+            width = _this$props$setting$w === void 0 ? 0 : _this$props$setting$w,
+            _this$props$setting$c = _this$props$setting.color,
+            color = _this$props$setting$c === void 0 ? "#000" : _this$props$setting$c,
+            _this$props$setting$b = _this$props$setting.border,
+            border = _this$props$setting$b === void 0 ? 0 : _this$props$setting$b,
+            _this$props$setting$o = _this$props$setting.opacity,
+            opacity = _this$props$setting$o === void 0 ? 1 : _this$props$setting$o,
+            _this$props$setting$i = _this$props$setting.inset,
+            inset = _this$props$setting$i === void 0 ? false : _this$props$setting$i,
+            _this$props$setting$s2 = _this$props$setting.style,
+            style = _this$props$setting$s2 === void 0 ? {} : _this$props$setting$s2,
+            children = _this$props.children;
+
+        var linear = function linear(key) {
+          return [_react.default.createElement(_reactNativeSvg.Stop, {
+            offset: "0",
+            stopColor: color,
+            stopOpacity: opacity,
+            key: key + 'Linear0',
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 12
+            }
+          }), _react.default.createElement(_reactNativeSvg.Stop, {
+            offset: "1",
+            stopColor: color,
+            stopOpacity: "0",
+            key: key + 'Linear1',
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 13
+            }
+          })];
+        };
+
+        var lineWidth = border;
+        return _react.default.createElement(_reactNative.View, {
+          style: [{
+            position: "relative",
+            width: width
+          }, style],
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 20
+          }
+        }, function () {
+          switch (side) {
+            case "top":
+              return [_react.default.createElement(_reactNativeSvg.default, {
+                height: lineWidth,
+                width: width + lineWidth,
+                style: {
+                  position: "absolute",
+                  top: inset ? 0 : -lineWidth
+                },
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 25
+                }
+              }, _react.default.createElement(_reactNativeSvg.Defs, {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 26
+                }
+              }, _react.default.createElement(_reactNativeSvg.LinearGradient, {
+                id: "top",
+                x1: "0%",
+                x2: "0%",
+                y1: "100%",
+                y2: "0%",
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 27
+                }
+              }, linear('BorderTop')), _react.default.createElement(_reactNativeSvg.LinearGradient, {
+                id: "top-inset",
+                x1: "0%",
+                x2: "0%",
+                y1: "0%",
+                y2: "100%",
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 28
+                }
+              }, linear('BorderTopInset'))), _react.default.createElement(_reactNativeSvg.Rect, {
+                x: 0,
+                y: 0,
+                width: width,
+                height: lineWidth,
+                fill: "url(#top" + (inset ? "-inset" : "") + ")",
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 30
+                }
+              }))].concat((0, _toConsumableArray2.default)(children));
+
+            case "bottom":
+              return [].concat((0, _toConsumableArray2.default)(children), [_react.default.createElement(_reactNativeSvg.default, {
+                height: lineWidth,
+                width: width + lineWidth,
+                style: {
+                  position: "absolute",
+                  bottom: inset ? -lineWidth : 0
+                },
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 37
+                }
+              }, _react.default.createElement(_reactNativeSvg.Defs, {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 38
+                }
+              }, _react.default.createElement(_reactNativeSvg.LinearGradient, {
+                id: "bottom",
+                x1: "0%",
+                x2: "0%",
+                y1: "0%",
+                y2: "100%",
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 39
+                }
+              }, linear('BorderBottom')), _react.default.createElement(_reactNativeSvg.LinearGradient, {
+                id: "bottom-inset",
+                x1: "0%",
+                x2: "0%",
+                y1: "100%",
+                y2: "0%",
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 40
+                }
+              }, linear('BorderBottomInset'))), _react.default.createElement(_reactNativeSvg.Rect, {
+                x: 0,
+                y: 0,
+                width: width,
+                height: lineWidth,
+                fill: "url(#bottom" + (inset ? "-inset" : "") + ")",
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 42
+                }
+              }))]);
+
+            default:
+              throw new Error("Wrong Type of Side! We just support 'top' and 'bottom'");
+              return null;
+          }
+        }());
+      };
+
+      return _this;
+    }
+
+    return BorderShadow;
+  }(_react.Component);
+
+  exports.default = BorderShadow;
+},"node_modules_react-native-shadow_lib_BorderShadow",["node_modules_@babel_runtime_helpers_interopRequireDefault","node_modules_@babel_runtime_helpers_interopRequireWildcard","node_modules_@babel_runtime_helpers_toConsumableArray","node_modules_@babel_runtime_helpers_classCallCheck","node_modules_@babel_runtime_helpers_possibleConstructorReturn","node_modules_@babel_runtime_helpers_getPrototypeOf","node_modules_@babel_runtime_helpers_inherits","node_modules_react_index","react-native-implementation","node_modules_react-native-svg_src_index.ts"],"node_modules/react-native-shadow/lib/BorderShadow.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
 
@@ -4654,169 +5374,27 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   };
 },"src_views_TabItem",["node_modules_wchat-app-kit_index"],"src/views/TabItem.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
-  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
-
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
   exports.default = void 0;
 
-  var _regenerator = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[1], "@babel/runtime/regenerator"));
+  var _wchatAppKit = _$$_REQUIRE(_dependencyMap[0], "wchat-app-kit");
 
-  var _wchatAppKit = _$$_REQUIRE(_dependencyMap[2], "wchat-app-kit");
-
-  var store_key_logininfo = "login_info";
-  var store_key_indextabs = "tabs_index";
-  var store_key_his_search = "his_search_";
-  var store_key_love_gid = "love_gid_";
-  var shop_first_show = "show_tip_";
-  var _default = {
-    getLoginUser: function getLoginUser() {
-      return _regenerator.default.async(function getLoginUser$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              _context.next = 2;
-              return _regenerator.default.awrap(_wchatAppKit.Storage.get(store_key_logininfo));
-
-            case 2:
-              return _context.abrupt("return", _context.sent);
-
-            case 3:
-            case "end":
-              return _context.stop();
-          }
-        }
-      });
+  var strings = new _wchatAppKit.LocalizedStrings({
+    en: {
+      tab: "tab",
+      lan: "English"
     },
-    saveLoginUser: function saveLoginUser(user) {
-      return _regenerator.default.async(function saveLoginUser$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
-              _context2.next = 2;
-              return _regenerator.default.awrap(_wchatAppKit.Storage.save(store_key_logininfo, JSON.stringify(user)));
-
-            case 2:
-              return _context2.abrupt("return", _context2.sent);
-
-            case 3:
-            case "end":
-              return _context2.stop();
-          }
-        }
-      });
-    },
-    getIndexTabs: function getIndexTabs() {
-      return _regenerator.default.async(function getIndexTabs$(_context3) {
-        while (1) {
-          switch (_context3.prev = _context3.next) {
-            case 0:
-              _context3.next = 2;
-              return _regenerator.default.awrap(_wchatAppKit.Storage.get(store_key_indextabs));
-
-            case 2:
-              return _context3.abrupt("return", _context3.sent);
-
-            case 3:
-            case "end":
-              return _context3.stop();
-          }
-        }
-      });
-    },
-    saveIndexTabs: function saveIndexTabs(tabs) {
-      return _regenerator.default.async(function saveIndexTabs$(_context4) {
-        while (1) {
-          switch (_context4.prev = _context4.next) {
-            case 0:
-              _context4.next = 2;
-              return _regenerator.default.awrap(_wchatAppKit.Storage.save(store_key_indextabs, JSON.stringify(tabs)));
-
-            case 2:
-              return _context4.abrupt("return", _context4.sent);
-
-            case 3:
-            case "end":
-              return _context4.stop();
-          }
-        }
-      });
-    },
-    getHisSearchByUser: function getHisSearchByUser(uid) {
-      return _regenerator.default.async(function getHisSearchByUser$(_context5) {
-        while (1) {
-          switch (_context5.prev = _context5.next) {
-            case 0:
-              _context5.next = 2;
-              return _regenerator.default.awrap(_wchatAppKit.Storage.get(store_key_his_search + uid));
-
-            case 2:
-              return _context5.abrupt("return", _context5.sent);
-
-            case 3:
-            case "end":
-              return _context5.stop();
-          }
-        }
-      });
-    },
-    saveHisSearchByUser: function saveHisSearchByUser(uid, searchContent) {
-      return _regenerator.default.async(function saveHisSearchByUser$(_context6) {
-        while (1) {
-          switch (_context6.prev = _context6.next) {
-            case 0:
-              _context6.next = 2;
-              return _regenerator.default.awrap(_wchatAppKit.Storage.save(store_key_his_search + uid, searchContent));
-
-            case 2:
-              return _context6.abrupt("return", _context6.sent);
-
-            case 3:
-            case "end":
-              return _context6.stop();
-          }
-        }
-      });
-    },
-    saveLoveGoods: function saveLoveGoods(uid, goodsList) {
-      return _regenerator.default.async(function saveLoveGoods$(_context7) {
-        while (1) {
-          switch (_context7.prev = _context7.next) {
-            case 0:
-              _context7.next = 2;
-              return _regenerator.default.awrap(_wchatAppKit.Storage.save(store_key_love_gid + uid, JSON.stringify(goodsList)));
-
-            case 2:
-              return _context7.abrupt("return", _context7.sent);
-
-            case 3:
-            case "end":
-              return _context7.stop();
-          }
-        }
-      });
-    },
-    getLoveGoods: function getLoveGoods(uid) {
-      return _regenerator.default.async(function getLoveGoods$(_context8) {
-        while (1) {
-          switch (_context8.prev = _context8.next) {
-            case 0:
-              _context8.next = 2;
-              return _regenerator.default.awrap(_wchatAppKit.Storage.get(store_key_love_gid + uid));
-
-            case 2:
-              return _context8.abrupt("return", _context8.sent);
-
-            case 3:
-            case "end":
-              return _context8.stop();
-          }
-        }
-      });
+    cn: {
+      tab: "页签",
+      lan: "中文"
     }
+  });
+  var _default = {
+    strings: strings
   };
   exports.default = _default;
-},"src_utils_StoreUtils",["node_modules_@babel_runtime_helpers_interopRequireDefault","node_modules_@babel_runtime_regenerator_index","node_modules_wchat-app-kit_index"],"src/utils/StoreUtils.js");
+},"src_utils_Language",["node_modules_wchat-app-kit_index"],"src/utils/Language.js");
 __r("InitializeCore");
 __r("src_App");

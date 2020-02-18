@@ -1,10 +1,12 @@
-import {EUIKit, React, RNKit, WChat,LinearGradient} from 'wchat-app-kit';
+import {EUIKit, React, RNKit, WChat} from 'wchat-app-kit';
 import {Colors,Screen,Language} from '../utils';
 import TitleView from '../common/TitleView';
 import {TouchableOpacity} from 'react-native';
 import NavUtils from 'wchat-app-kit/src/NavUtils';
 const {View} = EUIKit;
 const {ScrollView,Text} = RNKit;
+
+import {BoxShadow} from 'react-native-shadow'
 
 export default function HomeView(props) {
 
@@ -318,11 +320,21 @@ export default function HomeView(props) {
                 <Text style={[styles.touchTxt,]}> {Language.strings.lan} </Text>
               </TouchableOpacity>
 
-              <LinearGradient start={{x: 0.25, y: 0.25}} end={{x: 0.75, y: 0.75}}
-                    colors={['red', 'green', 'black']} style={{width:90,height:36,marginTop:10}}>
-              </LinearGradient>
-
+            
             </View>
+
+            <BoxShadow setting={{
+              width:100,
+              height:200,
+              color:"#000",
+              border:10,
+              radius:5,
+              opacity:0.2,
+              x:0,
+              y:8,
+              style:{marginVertical:5}
+            }}/>
+
             <Text style={{fontSize: 14, color: Colors.title,fontWeight:'bold',marginBottom:24}} numberOfLines={1}> 其它功能参考官方或react-native-elements </Text>
           </View>
 
