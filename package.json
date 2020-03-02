@@ -21,6 +21,7 @@
     "react-native-shadow": "^1.2.2",
     "react-native-snap-carousel": "^3.8.3",
     "react-native-textarea": "^1.0.3",
+    "react-native-agora": "^2.9.1-alpha.3",
     "typescript": "^3.7.5",
     "wchat-app-kit": "git+https://github.com/wchatim/wchat-app-kit.git"
   },
