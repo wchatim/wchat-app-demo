@@ -3,6 +3,7 @@ import {Colors,Screen,Language} from '../utils';
 import TitleView from '../common/TitleView';
 import {TouchableOpacity} from 'react-native';
 import NavUtils from 'wchat-app-kit/src/NavUtils';
+import LottieView from 'lottie-react-native';
 const {View} = EUIKit;
 const {ScrollView,Text} = RNKit;
 
@@ -201,6 +202,11 @@ export default function HomeView(props) {
     WChat.log("tag","messge");
   }
 
+  jsexception = () =>{
+    WChat.log("tag","jsexception");
+    let a;
+    a.name;
+  }
 
 
     return (
@@ -320,9 +326,10 @@ export default function HomeView(props) {
                 <Text style={[styles.touchTxt,]}> {Language.strings.lan} </Text>
               </TouchableOpacity>
 
-            
+              <TouchableOpacity activeOpacity={0.95} onPress={()=>jsexception()} style={[styles.touchViewBg,{width:90,marginTop:12}]}>
+                <Text style={[styles.touchTxt,]}> js异常 </Text>
+              </TouchableOpacity>
             </View>
-
             <BoxShadow setting={{
               width:100,
               height:200,
@@ -334,11 +341,15 @@ export default function HomeView(props) {
               y:8,
               style:{marginVertical:5}
             }}/>
-
+            <View style={{width:200,height:200}}>
+              <LottieView
+                    source={require('../json/anim.json')}
+                    autoPlay
+                    loop
+                  />
+            </View>
             <Text style={{fontSize: 14, color: Colors.title,fontWeight:'bold',marginBottom:24}} numberOfLines={1}> 其它功能参考官方或react-native-elements </Text>
           </View>
-
-
         </ScrollView>
       </View>
     )
