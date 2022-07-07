@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@egjs/hammerjs": "^2.0.17",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "react-addons-shallow-compare": "15.6.2",
     "react-native-agora": "^2.9.1-alpha.3",
     "react-native-animation-hooks": "^1.0.1",
